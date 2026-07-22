@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-22 09:35:51 UTC",
+  "updated_at": "2026-07-22 13:16:25 UTC",
   "pairs": [
     {
       "id": "XAUUSD",
@@ -8,18 +8,185 @@
         "M1": {
           "pair": "XAU/USD",
           "timeframe": "M1",
-          "structure": "Haussier",
-          "zone": "Discount",
-          "range_high": 4122.61,
-          "range_low": 4117.77,
-          "range_size": 4.84,
-          "live_price": 4117.97,
-          "bos": "baissier",
+          "structure": "Baissier",
+          "zone": "Premium",
+          "range_high": 4128.18,
+          "range_low": 4109.65,
+          "range_size": 18.54,
+          "live_price": 4125.0,
+          "bos": null,
           "choch": null,
           "daily_bias": "Neutre",
           "weekly_bias": "Neutre",
-          "rsi": 39.7,
-          "atr": 1.04,
+          "rsi": 60.3,
+          "atr": 2.34,
+          "manipulation": {
+            "fakeBos": false,
+            "inducement": "bull",
+            "score": 70
+          },
+          "volume": {
+            "profile": [
+              {
+                "price": 4116.74812376,
+                "volume": 100
+              },
+              {
+                "price": 4120.87312188,
+                "volume": 110
+              },
+              {
+                "price": 4124.99812,
+                "volume": 120
+              },
+              {
+                "price": 4129.12311812,
+                "volume": 130
+              },
+              {
+                "price": 4133.24811624,
+                "volume": 140
+              }
+            ],
+            "poc": 4124.99812,
+            "delta": 10.277372396659366,
+            "score": 52.05547447933187
+          },
+          "cascade": {
+            "score": 50,
+            "details": [
+              {
+                "label": "M1",
+                "aligned": true
+              },
+              {
+                "label": "M5",
+                "aligned": true
+              },
+              {
+                "label": "M15",
+                "aligned": false
+              },
+              {
+                "label": "H1",
+                "aligned": false
+              },
+              {
+                "label": "H4",
+                "aligned": false
+              },
+              {
+                "label": "D1",
+                "aligned": true
+              },
+              {
+                "label": "W1",
+                "aligned": true
+              }
+            ]
+          },
+          "scs": {
+            "score": 23,
+            "details": [
+              {
+                "label": "BOS strength",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "CHoCH force",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "OB quality",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "FVG quality",
+                "value": "5",
+                "pts": 5
+              },
+              {
+                "label": "Multi-TF alignées",
+                "value": "4 / 4",
+                "pts": 12
+              },
+              {
+                "label": "Bias Daily/Weekly",
+                "value": "Neutre/Neutre",
+                "pts": 0
+              },
+              {
+                "label": "Killzone",
+                "value": "active",
+                "pts": 6
+              }
+            ]
+          },
+          "probabilities": {
+            "monteCarlo": 0.5,
+            "mlPrediction": null,
+            "finalProb": 0.5
+          },
+          "killZones": [
+            {
+              "id": "london",
+              "label": "London",
+              "start": 480,
+              "end": 600,
+              "active": false
+            },
+            {
+              "id": "ny",
+              "label": "New York",
+              "start": 780,
+              "end": 900,
+              "active": false
+            },
+            {
+              "id": "asia",
+              "label": "Asie",
+              "start": 0,
+              "end": 180,
+              "active": false
+            }
+          ],
+          "metrics": {
+            "momentum": "Haussier",
+            "cumDelta": 5.99,
+            "emaTrend": "Baissier",
+            "majorTrend": "Neutre",
+            "bbUpper": 4126.6,
+            "bbMiddle": 4119.28,
+            "bbLower": 4111.96,
+            "macdHist": 1.0725
+          },
+          "ichimoku": {
+            "tenkan": 4121.77,
+            "kijun": 4117.54,
+            "senkouA": 4119.65,
+            "senkouB": 4121.71
+          },
+          "patterns": [],
+          "divergences": []
+        },
+        "M5": {
+          "pair": "XAU/USD",
+          "timeframe": "M5",
+          "structure": "Baissier",
+          "zone": "Premium",
+          "range_high": 4133.77,
+          "range_low": 4109.65,
+          "range_size": 24.12,
+          "live_price": 4125.0,
+          "bos": null,
+          "choch": null,
+          "daily_bias": "Neutre",
+          "weekly_bias": "Neutre",
+          "rsi": 54.2,
+          "atr": 4.43,
           "manipulation": {
             "fakeBos": false,
             "inducement": null,
@@ -28,29 +195,29 @@
           "volume": {
             "profile": [
               {
-                "price": 4109.73293226,
+                "price": 4116.74812376,
                 "volume": 100
               },
               {
-                "price": 4113.850901129999,
+                "price": 4120.87312188,
                 "volume": 110
               },
               {
-                "price": 4117.96887,
+                "price": 4124.99812,
                 "volume": 120
               },
               {
-                "price": 4122.086838869999,
+                "price": 4129.12311812,
                 "volume": 130
               },
               {
-                "price": 4126.2048077399995,
+                "price": 4133.24811624,
                 "volume": 140
               }
             ],
-            "poc": 4117.96887,
-            "delta": -10.28625100073063,
-            "score": 47.94274979985387
+            "poc": 4124.99812,
+            "delta": 4.219448711994289,
+            "score": 50.84388974239886
           },
           "cascade": {
             "score": 50,
@@ -58,6 +225,173 @@
               {
                 "label": "M1",
                 "aligned": true
+              },
+              {
+                "label": "M5",
+                "aligned": true
+              },
+              {
+                "label": "M15",
+                "aligned": false
+              },
+              {
+                "label": "H1",
+                "aligned": false
+              },
+              {
+                "label": "H4",
+                "aligned": false
+              },
+              {
+                "label": "D1",
+                "aligned": true
+              },
+              {
+                "label": "W1",
+                "aligned": true
+              }
+            ]
+          },
+          "scs": {
+            "score": 23,
+            "details": [
+              {
+                "label": "BOS strength",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "CHoCH force",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "OB quality",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "FVG quality",
+                "value": "5",
+                "pts": 5
+              },
+              {
+                "label": "Multi-TF alignées",
+                "value": "4 / 4",
+                "pts": 12
+              },
+              {
+                "label": "Bias Daily/Weekly",
+                "value": "Neutre/Neutre",
+                "pts": 0
+              },
+              {
+                "label": "Killzone",
+                "value": "active",
+                "pts": 6
+              }
+            ]
+          },
+          "probabilities": {
+            "monteCarlo": 0.5,
+            "mlPrediction": null,
+            "finalProb": 0.5
+          },
+          "killZones": [
+            {
+              "id": "london",
+              "label": "London",
+              "start": 480,
+              "end": 600,
+              "active": false
+            },
+            {
+              "id": "ny",
+              "label": "New York",
+              "start": 780,
+              "end": 900,
+              "active": false
+            },
+            {
+              "id": "asia",
+              "label": "Asie",
+              "start": 0,
+              "end": 180,
+              "active": false
+            }
+          ],
+          "metrics": {
+            "momentum": "Haussier",
+            "cumDelta": -10.88,
+            "emaTrend": "Haussier",
+            "majorTrend": "Neutre",
+            "bbUpper": 4132.74,
+            "bbMiddle": 4123.17,
+            "bbLower": 4113.59,
+            "macdHist": -0.3955
+          },
+          "ichimoku": {
+            "tenkan": 4120.23,
+            "kijun": 4121.71,
+            "senkouA": 4120.97,
+            "senkouB": 4121.71
+          },
+          "patterns": [],
+          "divergences": []
+        },
+        "M15": {
+          "pair": "XAU/USD",
+          "timeframe": "M15",
+          "structure": "Haussier",
+          "zone": "Premium",
+          "range_high": 4134.79,
+          "range_low": 4109.15,
+          "range_size": 25.65,
+          "live_price": 4125.0,
+          "bos": null,
+          "choch": null,
+          "daily_bias": "Neutre",
+          "weekly_bias": "Neutre",
+          "rsi": 54.0,
+          "atr": 6.94,
+          "manipulation": {
+            "fakeBos": false,
+            "inducement": null,
+            "score": 100
+          },
+          "volume": {
+            "profile": [
+              {
+                "price": 4116.74812376,
+                "volume": 100
+              },
+              {
+                "price": 4120.87312188,
+                "volume": 110
+              },
+              {
+                "price": 4124.99812,
+                "volume": 120
+              },
+              {
+                "price": 4129.12311812,
+                "volume": 130
+              },
+              {
+                "price": 4133.24811624,
+                "volume": 140
+              }
+            ],
+            "poc": 4124.99812,
+            "delta": 3.9909250794516637,
+            "score": 50.79818501589033
+          },
+          "cascade": {
+            "score": 40,
+            "details": [
+              {
+                "label": "M1",
+                "aligned": false
               },
               {
                 "label": "M5",
@@ -86,12 +420,12 @@
             ]
           },
           "scs": {
-            "score": 41,
+            "score": 20,
             "details": [
               {
                 "label": "BOS strength",
-                "value": "10",
-                "pts": 10
+                "value": "0",
+                "pts": 0
               },
               {
                 "label": "CHoCH force",
@@ -100,8 +434,8 @@
               },
               {
                 "label": "OB quality",
-                "value": "8",
-                "pts": 8
+                "value": "0",
+                "pts": 0
               },
               {
                 "label": "FVG quality",
@@ -110,8 +444,8 @@
               },
               {
                 "label": "Multi-TF alignées",
-                "value": "4 / 4",
-                "pts": 12
+                "value": "3 / 4",
+                "pts": 9
               },
               {
                 "label": "Bias Daily/Weekly",
@@ -128,7 +462,7 @@
           "probabilities": {
             "monteCarlo": 0.65,
             "mlPrediction": null,
-            "finalProb": 0.75
+            "finalProb": 0.65
           },
           "killZones": [
             {
@@ -154,39 +488,39 @@
             }
           ],
           "metrics": {
-            "momentum": "Neutre",
-            "cumDelta": 2.48,
+            "momentum": "Baissier",
+            "cumDelta": 17.57,
             "emaTrend": "Haussier",
             "majorTrend": "Neutre",
-            "bbUpper": 4122.84,
-            "bbMiddle": 4120.32,
-            "bbLower": 4117.8,
-            "macdHist": -0.4428
+            "bbUpper": 4129.84,
+            "bbMiddle": 4120.34,
+            "bbLower": 4110.83,
+            "macdHist": 0.3689
           },
           "ichimoku": {
-            "tenkan": 4119.38,
-            "kijun": 4120.19,
-            "senkouA": 4119.78,
-            "senkouB": 4117.9
+            "tenkan": 4121.71,
+            "kijun": 4121.46,
+            "senkouA": 4121.58,
+            "senkouB": 4115.72
           },
           "patterns": [],
           "divergences": []
         },
-        "M5": {
+        "H1": {
           "pair": "XAU/USD",
-          "timeframe": "M5",
-          "structure": "Baissier",
+          "timeframe": "H1",
+          "structure": "Haussier",
           "zone": "Premium",
-          "range_high": 4122.61,
-          "range_low": 4109.15,
-          "range_size": 13.46,
-          "live_price": 4117.67,
+          "range_high": 4140.79,
+          "range_low": 4044.49,
+          "range_size": 96.3,
+          "live_price": 4125.0,
           "bos": null,
           "choch": null,
           "daily_bias": "Neutre",
           "weekly_bias": "Neutre",
-          "rsi": 47.6,
-          "atr": 2.68,
+          "rsi": 64.9,
+          "atr": 12.76,
           "manipulation": {
             "fakeBos": false,
             "inducement": null,
@@ -195,29 +529,29 @@
           "volume": {
             "profile": [
               {
-                "price": 4109.4374544,
+                "price": 4116.74812376,
                 "volume": 100
               },
               {
-                "price": 4113.5551272,
+                "price": 4120.87312188,
                 "volume": 110
               },
               {
-                "price": 4117.6728,
+                "price": 4124.99812,
                 "volume": 120
               },
               {
-                "price": 4121.790472799999,
+                "price": 4129.12311812,
                 "volume": 130
               },
               {
-                "price": 4125.9081456,
+                "price": 4133.24811624,
                 "volume": 140
               }
             ],
-            "poc": 4117.6728,
-            "delta": -2.440394056231497,
-            "score": 49.5119211887537
+            "poc": 4124.99812,
+            "delta": 14.89190456757646,
+            "score": 52.978380913515295
           },
           "cascade": {
             "score": 40,
@@ -228,27 +562,27 @@
               },
               {
                 "label": "M5",
-                "aligned": true
+                "aligned": false
               },
               {
                 "label": "M15",
-                "aligned": false
+                "aligned": true
               },
               {
                 "label": "H1",
-                "aligned": false
+                "aligned": true
               },
               {
                 "label": "H4",
-                "aligned": false
+                "aligned": true
               },
               {
                 "label": "D1",
-                "aligned": true
+                "aligned": false
               },
               {
                 "label": "W1",
-                "aligned": true
+                "aligned": false
               }
             ]
           },
@@ -321,244 +655,77 @@
             }
           ],
           "metrics": {
-            "momentum": "Baissier",
-            "cumDelta": 16.14,
-            "emaTrend": "Baissier",
-            "majorTrend": "Neutre",
-            "bbUpper": 4122.78,
-            "bbMiddle": 4117.8,
-            "bbLower": 4112.82,
-            "macdHist": 0.2756
-          },
-          "ichimoku": {
-            "tenkan": 4119.6,
-            "kijun": 4115.88,
-            "senkouA": 4117.74,
-            "senkouB": 4121.97
-          },
-          "patterns": [],
-          "divergences": []
-        },
-        "M15": {
-          "pair": "XAU/USD",
-          "timeframe": "M15",
-          "structure": "Haussier",
-          "zone": "Discount",
-          "range_high": 4140.79,
-          "range_low": 4109.15,
-          "range_size": 31.64,
-          "live_price": 4117.67,
-          "bos": null,
-          "choch": null,
-          "daily_bias": "Neutre",
-          "weekly_bias": "Neutre",
-          "rsi": 50.0,
-          "atr": 5.59,
-          "manipulation": {
-            "fakeBos": false,
-            "inducement": "bear",
-            "score": 70
-          },
-          "volume": {
-            "profile": [
-              {
-                "price": 4109.4374544,
-                "volume": 100
-              },
-              {
-                "price": 4113.5551272,
-                "volume": 110
-              },
-              {
-                "price": 4117.6728,
-                "volume": 120
-              },
-              {
-                "price": 4121.790472799999,
-                "volume": 130
-              },
-              {
-                "price": 4125.9081456,
-                "volume": 140
-              }
-            ],
-            "poc": 4117.6728,
-            "delta": 0.03190385944751739,
-            "score": 50.0063807718895
-          },
-          "cascade": {
-            "score": 50,
-            "details": [
-              {
-                "label": "M1",
-                "aligned": true
-              },
-              {
-                "label": "M5",
-                "aligned": false
-              },
-              {
-                "label": "M15",
-                "aligned": true
-              },
-              {
-                "label": "H1",
-                "aligned": true
-              },
-              {
-                "label": "H4",
-                "aligned": true
-              },
-              {
-                "label": "D1",
-                "aligned": false
-              },
-              {
-                "label": "W1",
-                "aligned": false
-              }
-            ]
-          },
-          "scs": {
-            "score": 23,
-            "details": [
-              {
-                "label": "BOS strength",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "CHoCH force",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "OB quality",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "FVG quality",
-                "value": "5",
-                "pts": 5
-              },
-              {
-                "label": "Multi-TF alignées",
-                "value": "4 / 4",
-                "pts": 12
-              },
-              {
-                "label": "Bias Daily/Weekly",
-                "value": "Neutre/Neutre",
-                "pts": 0
-              },
-              {
-                "label": "Killzone",
-                "value": "active",
-                "pts": 6
-              }
-            ]
-          },
-          "probabilities": {
-            "monteCarlo": 0.65,
-            "mlPrediction": null,
-            "finalProb": 0.7
-          },
-          "killZones": [
-            {
-              "id": "london",
-              "label": "London",
-              "start": 480,
-              "end": 600,
-              "active": false
-            },
-            {
-              "id": "ny",
-              "label": "New York",
-              "start": 780,
-              "end": 900,
-              "active": false
-            },
-            {
-              "id": "asia",
-              "label": "Asie",
-              "start": 0,
-              "end": 180,
-              "active": false
-            }
-          ],
-          "metrics": {
             "momentum": "Haussier",
-            "cumDelta": -14.35,
+            "cumDelta": -8.24,
             "emaTrend": "Haussier",
             "majorTrend": "Neutre",
-            "bbUpper": 4132.56,
-            "bbMiddle": 4120.29,
-            "bbLower": 4108.03,
-            "macdHist": -0.8367
+            "bbUpper": 4146.44,
+            "bbMiddle": 4107.88,
+            "bbLower": 4069.31,
+            "macdHist": -1.7246
           },
           "ichimoku": {
-            "tenkan": 4115.88,
-            "kijun": 4124.97,
-            "senkouA": 4120.42,
-            "senkouB": 4108.05
+            "tenkan": 4121.97,
+            "kijun": 4092.64,
+            "senkouA": 4107.3,
+            "senkouB": 4069.75
           },
           "patterns": [],
           "divergences": []
         },
-        "H1": {
+        "H4": {
           "pair": "XAU/USD",
-          "timeframe": "H1",
+          "timeframe": "H4",
           "structure": "Haussier",
           "zone": "Premium",
           "range_high": 4140.79,
-          "range_low": 4043.05,
-          "range_size": 97.73,
-          "live_price": 4117.67,
+          "range_low": 3983.43,
+          "range_size": 157.36,
+          "live_price": 4125.91,
           "bos": null,
           "choch": null,
           "daily_bias": "Neutre",
           "weekly_bias": "Neutre",
-          "rsi": 65.5,
-          "atr": 12.09,
+          "rsi": 73.6,
+          "atr": 23.35,
           "manipulation": {
-            "fakeBos": false,
+            "fakeBos": true,
             "inducement": null,
-            "score": 100
+            "score": 60
           },
           "volume": {
             "profile": [
               {
-                "price": 4109.4374544,
+                "price": 4117.6549365,
                 "volume": 100
               },
               {
-                "price": 4113.5551272,
+                "price": 4121.7808432500005,
                 "volume": 110
               },
               {
-                "price": 4117.6728,
+                "price": 4125.90675,
                 "volume": 120
               },
               {
-                "price": 4121.790472799999,
+                "price": 4130.03265675,
                 "volume": 130
               },
               {
-                "price": 4125.9081456,
+                "price": 4134.1585635,
                 "volume": 140
               }
             ],
-            "poc": 4117.6728,
-            "delta": 15.462854073980765,
-            "score": 53.092570814796154
+            "poc": 4125.90675,
+            "delta": 23.553676977416117,
+            "score": 54.710735395483226
           },
           "cascade": {
-            "score": 50,
+            "score": 40,
             "details": [
               {
                 "label": "M1",
-                "aligned": true
+                "aligned": false
               },
               {
                 "label": "M5",
@@ -587,7 +754,7 @@
             ]
           },
           "scs": {
-            "score": 23,
+            "score": 20,
             "details": [
               {
                 "label": "BOS strength",
@@ -611,8 +778,8 @@
               },
               {
                 "label": "Multi-TF alignées",
-                "value": "4 / 4",
-                "pts": 12
+                "value": "3 / 4",
+                "pts": 9
               },
               {
                 "label": "Bias Daily/Weekly",
@@ -655,199 +822,22 @@
             }
           ],
           "metrics": {
-            "momentum": "Baissier",
-            "cumDelta": 0.06,
-            "emaTrend": "Haussier",
-            "majorTrend": "Neutre",
-            "bbUpper": 4143.89,
-            "bbMiddle": 4098.24,
-            "bbLower": 4052.58,
-            "macdHist": -0.4842
-          },
-          "ichimoku": {
-            "tenkan": 4118.21,
-            "kijun": 4092.64,
-            "senkouA": 4105.43,
-            "senkouB": 4069.75
-          },
-          "patterns": [
-            {
-              "type": "Shooting Star",
-              "icon": "⭐"
-            }
-          ],
-          "divergences": []
-        },
-        "H4": {
-          "pair": "XAU/USD",
-          "timeframe": "H4",
-          "structure": "Haussier",
-          "zone": "Premium",
-          "range_high": 4140.79,
-          "range_low": 3961.81,
-          "range_size": 178.98,
-          "live_price": 4117.67,
-          "bos": "haussier",
-          "choch": null,
-          "daily_bias": "Neutre",
-          "weekly_bias": "Neutre",
-          "rsi": 73.0,
-          "atr": 22.69,
-          "manipulation": {
-            "fakeBos": false,
-            "inducement": null,
-            "score": 100
-          },
-          "volume": {
-            "profile": [
-              {
-                "price": 4109.4374544,
-                "volume": 100
-              },
-              {
-                "price": 4113.5551272,
-                "volume": 110
-              },
-              {
-                "price": 4117.6728,
-                "volume": 120
-              },
-              {
-                "price": 4121.790472799999,
-                "volume": 130
-              },
-              {
-                "price": 4125.9081456,
-                "volume": 140
-              }
-            ],
-            "poc": 4117.6728,
-            "delta": 23.03294939112378,
-            "score": 54.60658987822475
-          },
-          "cascade": {
-            "score": 50,
-            "details": [
-              {
-                "label": "M1",
-                "aligned": true
-              },
-              {
-                "label": "M5",
-                "aligned": false
-              },
-              {
-                "label": "M15",
-                "aligned": true
-              },
-              {
-                "label": "H1",
-                "aligned": true
-              },
-              {
-                "label": "H4",
-                "aligned": true
-              },
-              {
-                "label": "D1",
-                "aligned": false
-              },
-              {
-                "label": "W1",
-                "aligned": false
-              }
-            ]
-          },
-          "scs": {
-            "score": 41,
-            "details": [
-              {
-                "label": "BOS strength",
-                "value": "10",
-                "pts": 10
-              },
-              {
-                "label": "CHoCH force",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "OB quality",
-                "value": "8",
-                "pts": 8
-              },
-              {
-                "label": "FVG quality",
-                "value": "5",
-                "pts": 5
-              },
-              {
-                "label": "Multi-TF alignées",
-                "value": "4 / 4",
-                "pts": 12
-              },
-              {
-                "label": "Bias Daily/Weekly",
-                "value": "Neutre/Neutre",
-                "pts": 0
-              },
-              {
-                "label": "Killzone",
-                "value": "active",
-                "pts": 6
-              }
-            ]
-          },
-          "probabilities": {
-            "monteCarlo": 0.5,
-            "mlPrediction": null,
-            "finalProb": 0.55
-          },
-          "killZones": [
-            {
-              "id": "london",
-              "label": "London",
-              "start": 480,
-              "end": 600,
-              "active": false
-            },
-            {
-              "id": "ny",
-              "label": "New York",
-              "start": 780,
-              "end": 900,
-              "active": false
-            },
-            {
-              "id": "asia",
-              "label": "Asie",
-              "start": 0,
-              "end": 180,
-              "active": false
-            }
-          ],
-          "metrics": {
             "momentum": "Haussier",
-            "cumDelta": -51.07,
+            "cumDelta": -63.41,
             "emaTrend": "Haussier",
             "majorTrend": "Neutre",
-            "bbUpper": 4128.44,
-            "bbMiddle": 4045.5,
-            "bbLower": 3962.57,
-            "macdHist": 10.839
+            "bbUpper": 4138.97,
+            "bbMiddle": 4051.12,
+            "bbLower": 3963.28,
+            "macdHist": 10.1146
           },
           "ichimoku": {
-            "tenkan": 4079.88,
+            "tenkan": 4092.64,
             "kijun": 4062.11,
-            "senkouA": 4070.99,
+            "senkouA": 4077.37,
             "senkouB": 4051.3
           },
-          "patterns": [
-            {
-              "type": "Shooting Star",
-              "icon": "⭐"
-            }
-          ],
+          "patterns": [],
           "divergences": []
         },
         "D1": {
@@ -858,12 +848,12 @@
           "range_high": 4202.03,
           "range_low": 3949.45,
           "range_size": 252.59,
-          "live_price": 4117.67,
+          "live_price": 4125.91,
           "bos": null,
           "choch": "haussier",
           "daily_bias": "Neutre",
           "weekly_bias": "Neutre",
-          "rsi": 52.8,
+          "rsi": 53.6,
           "atr": 65.93,
           "manipulation": {
             "fakeBos": false,
@@ -873,36 +863,36 @@
           "volume": {
             "profile": [
               {
-                "price": 4109.4374544,
+                "price": 4117.6549365,
                 "volume": 100
               },
               {
-                "price": 4113.5551272,
+                "price": 4121.7808432500005,
                 "volume": 110
               },
               {
-                "price": 4117.6728,
+                "price": 4125.90675,
                 "volume": 120
               },
               {
-                "price": 4121.790472799999,
+                "price": 4130.03265675,
                 "volume": 130
               },
               {
-                "price": 4125.9081456,
+                "price": 4134.1585635,
                 "volume": 140
               }
             ],
-            "poc": 4117.6728,
-            "delta": 2.849218427344155,
-            "score": 50.56984368546883
+            "poc": 4125.90675,
+            "delta": 3.6270340683204765,
+            "score": 50.725406813664094
           },
           "cascade": {
-            "score": 40,
+            "score": 50,
             "details": [
               {
                 "label": "M1",
-                "aligned": false
+                "aligned": true
               },
               {
                 "label": "M5",
@@ -931,7 +921,7 @@
             ]
           },
           "scs": {
-            "score": 25,
+            "score": 28,
             "details": [
               {
                 "label": "BOS strength",
@@ -955,8 +945,8 @@
               },
               {
                 "label": "Multi-TF alignées",
-                "value": "3 / 4",
-                "pts": 9
+                "value": "4 / 4",
+                "pts": 12
               },
               {
                 "label": "Bias Daily/Weekly",
@@ -1003,10 +993,10 @@
             "cumDelta": -287.69,
             "emaTrend": "Baissier",
             "majorTrend": "Neutre",
-            "bbUpper": 4208.79,
-            "bbMiddle": 4083.64,
-            "bbLower": 3958.49,
-            "macdHist": 9.3602
+            "bbUpper": 4209.7,
+            "bbMiddle": 4084.05,
+            "bbLower": 3958.4,
+            "macdHist": 9.8856
           },
           "ichimoku": {
             "tenkan": 4051.3,
@@ -1025,12 +1015,12 @@
           "range_high": 5597.23,
           "range_low": 3949.45,
           "range_size": 1647.78,
-          "live_price": 4117.97,
+          "live_price": 4125.91,
           "bos": null,
           "choch": null,
           "daily_bias": "Neutre",
           "weekly_bias": "Neutre",
-          "rsi": 43.4,
+          "rsi": 43.6,
           "atr": 271.8,
           "manipulation": {
             "fakeBos": false,
@@ -1040,36 +1030,36 @@
           "volume": {
             "profile": [
               {
-                "price": 4109.73293226,
+                "price": 4117.6549365,
                 "volume": 100
               },
               {
-                "price": 4113.850901129999,
+                "price": 4121.7808432500005,
                 "volume": 110
               },
               {
-                "price": 4117.96887,
+                "price": 4125.90675,
                 "volume": 120
               },
               {
-                "price": 4122.086838869999,
+                "price": 4130.03265675,
                 "volume": 130
               },
               {
-                "price": 4126.2048077399995,
+                "price": 4134.1585635,
                 "volume": 140
               }
             ],
-            "poc": 4117.96887,
-            "delta": -6.625586241500024,
-            "score": 48.6748827517
+            "poc": 4125.90675,
+            "delta": -6.3528860815804435,
+            "score": 48.72942278368391
           },
           "cascade": {
-            "score": 40,
+            "score": 50,
             "details": [
               {
                 "label": "M1",
-                "aligned": false
+                "aligned": true
               },
               {
                 "label": "M5",
@@ -1094,6 +1084,1536 @@
               {
                 "label": "W1",
                 "aligned": true
+              }
+            ]
+          },
+          "scs": {
+            "score": 23,
+            "details": [
+              {
+                "label": "BOS strength",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "CHoCH force",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "OB quality",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "FVG quality",
+                "value": "5",
+                "pts": 5
+              },
+              {
+                "label": "Multi-TF alignées",
+                "value": "4 / 4",
+                "pts": 12
+              },
+              {
+                "label": "Bias Daily/Weekly",
+                "value": "Neutre/Neutre",
+                "pts": 0
+              },
+              {
+                "label": "Killzone",
+                "value": "active",
+                "pts": 6
+              }
+            ]
+          },
+          "probabilities": {
+            "monteCarlo": 0.5,
+            "mlPrediction": null,
+            "finalProb": 0.55
+          },
+          "killZones": [
+            {
+              "id": "london",
+              "label": "London",
+              "start": 480,
+              "end": 600,
+              "active": false
+            },
+            {
+              "id": "ny",
+              "label": "New York",
+              "start": 780,
+              "end": 900,
+              "active": false
+            },
+            {
+              "id": "asia",
+              "label": "Asie",
+              "start": 0,
+              "end": 180,
+              "active": false
+            }
+          ],
+          "metrics": {
+            "momentum": "Haussier",
+            "cumDelta": 207.2,
+            "emaTrend": "Haussier",
+            "majorTrend": "Neutre",
+            "bbUpper": 5018.12,
+            "bbMiddle": 4455.7,
+            "bbLower": 3893.28,
+            "macdHist": -60.0059
+          },
+          "ichimoku": {
+            "tenkan": 4272.05,
+            "kijun": 4773.34,
+            "senkouA": 4522.69,
+            "senkouB": null
+          },
+          "patterns": [],
+          "divergences": []
+        }
+      }
+    },
+    {
+      "id": "USDJPY",
+      "label": "USD/JPY",
+      "timeframes": {
+        "M1": {
+          "pair": "USD/JPY",
+          "timeframe": "M1",
+          "structure": "Haussier",
+          "zone": "Premium",
+          "range_high": 163.134,
+          "range_low": 163.068,
+          "range_size": 0.066,
+          "live_price": 163.109,
+          "bos": null,
+          "choch": null,
+          "daily_bias": "Neutre",
+          "weekly_bias": "Neutre",
+          "rsi": 58.1,
+          "atr": 0.012,
+          "manipulation": {
+            "fakeBos": false,
+            "inducement": null,
+            "score": 100
+          },
+          "volume": {
+            "profile": [
+              {
+                "price": 162.7829317,
+                "volume": 100
+              },
+              {
+                "price": 162.94604085,
+                "volume": 110
+              },
+              {
+                "price": 163.10915,
+                "volume": 120
+              },
+              {
+                "price": 163.27225914999997,
+                "volume": 130
+              },
+              {
+                "price": 163.4353683,
+                "volume": 140
+              }
+            ],
+            "poc": 163.10915,
+            "delta": 8.11172754177425,
+            "score": 51.62234550835485
+          },
+          "cascade": {
+            "score": 70,
+            "details": [
+              {
+                "label": "M1",
+                "aligned": true
+              },
+              {
+                "label": "M5",
+                "aligned": false
+              },
+              {
+                "label": "M15",
+                "aligned": true
+              },
+              {
+                "label": "H1",
+                "aligned": true
+              },
+              {
+                "label": "H4",
+                "aligned": true
+              },
+              {
+                "label": "D1",
+                "aligned": true
+              },
+              {
+                "label": "W1",
+                "aligned": true
+              }
+            ]
+          },
+          "scs": {
+            "score": 29,
+            "details": [
+              {
+                "label": "BOS strength",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "CHoCH force",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "OB quality",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "FVG quality",
+                "value": "5",
+                "pts": 5
+              },
+              {
+                "label": "Multi-TF alignées",
+                "value": "6 / 4",
+                "pts": 18
+              },
+              {
+                "label": "Bias Daily/Weekly",
+                "value": "Neutre/Neutre",
+                "pts": 0
+              },
+              {
+                "label": "Killzone",
+                "value": "active",
+                "pts": 6
+              }
+            ]
+          },
+          "probabilities": {
+            "monteCarlo": 0.65,
+            "mlPrediction": null,
+            "finalProb": 0.65
+          },
+          "killZones": [
+            {
+              "id": "london",
+              "label": "London",
+              "start": 480,
+              "end": 600,
+              "active": false
+            },
+            {
+              "id": "ny",
+              "label": "New York",
+              "start": 780,
+              "end": 900,
+              "active": false
+            },
+            {
+              "id": "asia",
+              "label": "Asie",
+              "start": 0,
+              "end": 180,
+              "active": false
+            }
+          ],
+          "metrics": {
+            "momentum": "Neutre",
+            "cumDelta": -0.012,
+            "emaTrend": "Haussier",
+            "majorTrend": "Neutre",
+            "bbUpper": 163.121,
+            "bbMiddle": 163.099,
+            "bbLower": 163.078,
+            "macdHist": 0.0004
+          },
+          "ichimoku": {
+            "tenkan": 163.098,
+            "kijun": 163.103,
+            "senkouA": 163.1,
+            "senkouB": 163.089
+          },
+          "patterns": [],
+          "divergences": []
+        },
+        "M5": {
+          "pair": "USD/JPY",
+          "timeframe": "M5",
+          "structure": "Baissier",
+          "zone": "Premium",
+          "range_high": 163.134,
+          "range_low": 162.999,
+          "range_size": 0.135,
+          "live_price": 163.109,
+          "bos": null,
+          "choch": null,
+          "daily_bias": "Neutre",
+          "weekly_bias": "Neutre",
+          "rsi": 61.3,
+          "atr": 0.025,
+          "manipulation": {
+            "fakeBos": false,
+            "inducement": null,
+            "score": 100
+          },
+          "volume": {
+            "profile": [
+              {
+                "price": 162.7829317,
+                "volume": 100
+              },
+              {
+                "price": 162.94604085,
+                "volume": 110
+              },
+              {
+                "price": 163.10915,
+                "volume": 120
+              },
+              {
+                "price": 163.27225914999997,
+                "volume": 130
+              },
+              {
+                "price": 163.4353683,
+                "volume": 140
+              }
+            ],
+            "poc": 163.10915,
+            "delta": 11.30092155040169,
+            "score": 52.26018431008034
+          },
+          "cascade": {
+            "score": 20,
+            "details": [
+              {
+                "label": "M1",
+                "aligned": false
+              },
+              {
+                "label": "M5",
+                "aligned": true
+              },
+              {
+                "label": "M15",
+                "aligned": false
+              },
+              {
+                "label": "H1",
+                "aligned": false
+              },
+              {
+                "label": "H4",
+                "aligned": false
+              },
+              {
+                "label": "D1",
+                "aligned": false
+              },
+              {
+                "label": "W1",
+                "aligned": false
+              }
+            ]
+          },
+          "scs": {
+            "score": 14,
+            "details": [
+              {
+                "label": "BOS strength",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "CHoCH force",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "OB quality",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "FVG quality",
+                "value": "5",
+                "pts": 5
+              },
+              {
+                "label": "Multi-TF alignées",
+                "value": "1 / 4",
+                "pts": 3
+              },
+              {
+                "label": "Bias Daily/Weekly",
+                "value": "Neutre/Neutre",
+                "pts": 0
+              },
+              {
+                "label": "Killzone",
+                "value": "active",
+                "pts": 6
+              }
+            ]
+          },
+          "probabilities": {
+            "monteCarlo": 0.5,
+            "mlPrediction": null,
+            "finalProb": 0.5
+          },
+          "killZones": [
+            {
+              "id": "london",
+              "label": "London",
+              "start": 480,
+              "end": 600,
+              "active": false
+            },
+            {
+              "id": "ny",
+              "label": "New York",
+              "start": 780,
+              "end": 900,
+              "active": false
+            },
+            {
+              "id": "asia",
+              "label": "Asie",
+              "start": 0,
+              "end": 180,
+              "active": false
+            }
+          ],
+          "metrics": {
+            "momentum": "Neutre",
+            "cumDelta": -0.037,
+            "emaTrend": "Haussier",
+            "majorTrend": "Neutre",
+            "bbUpper": 163.109,
+            "bbMiddle": 163.072,
+            "bbLower": 163.035,
+            "macdHist": 0.0039
+          },
+          "ichimoku": {
+            "tenkan": 163.089,
+            "kijun": 163.067,
+            "senkouA": 163.078,
+            "senkouB": 163.043
+          },
+          "patterns": [],
+          "divergences": [
+            {
+              "type": "bearish",
+              "label": "Divergence Baissière RSI"
+            }
+          ]
+        },
+        "M15": {
+          "pair": "USD/JPY",
+          "timeframe": "M15",
+          "structure": "Haussier",
+          "zone": "Premium",
+          "range_high": 163.313,
+          "range_low": 162.837,
+          "range_size": 0.475,
+          "live_price": 163.109,
+          "bos": null,
+          "choch": null,
+          "daily_bias": "Neutre",
+          "weekly_bias": "Neutre",
+          "rsi": 56.6,
+          "atr": 0.051,
+          "manipulation": {
+            "fakeBos": false,
+            "inducement": null,
+            "score": 100
+          },
+          "volume": {
+            "profile": [
+              {
+                "price": 162.7829317,
+                "volume": 100
+              },
+              {
+                "price": 162.94604085,
+                "volume": 110
+              },
+              {
+                "price": 163.10915,
+                "volume": 120
+              },
+              {
+                "price": 163.27225914999997,
+                "volume": 130
+              },
+              {
+                "price": 163.4353683,
+                "volume": 140
+              }
+            ],
+            "poc": 163.10915,
+            "delta": 6.629134404619691,
+            "score": 51.32582688092394
+          },
+          "cascade": {
+            "score": 70,
+            "details": [
+              {
+                "label": "M1",
+                "aligned": true
+              },
+              {
+                "label": "M5",
+                "aligned": false
+              },
+              {
+                "label": "M15",
+                "aligned": true
+              },
+              {
+                "label": "H1",
+                "aligned": true
+              },
+              {
+                "label": "H4",
+                "aligned": true
+              },
+              {
+                "label": "D1",
+                "aligned": true
+              },
+              {
+                "label": "W1",
+                "aligned": true
+              }
+            ]
+          },
+          "scs": {
+            "score": 29,
+            "details": [
+              {
+                "label": "BOS strength",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "CHoCH force",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "OB quality",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "FVG quality",
+                "value": "5",
+                "pts": 5
+              },
+              {
+                "label": "Multi-TF alignées",
+                "value": "6 / 4",
+                "pts": 18
+              },
+              {
+                "label": "Bias Daily/Weekly",
+                "value": "Neutre/Neutre",
+                "pts": 0
+              },
+              {
+                "label": "Killzone",
+                "value": "active",
+                "pts": 6
+              }
+            ]
+          },
+          "probabilities": {
+            "monteCarlo": 0.65,
+            "mlPrediction": null,
+            "finalProb": 0.65
+          },
+          "killZones": [
+            {
+              "id": "london",
+              "label": "London",
+              "start": 480,
+              "end": 600,
+              "active": false
+            },
+            {
+              "id": "ny",
+              "label": "New York",
+              "start": 780,
+              "end": 900,
+              "active": false
+            },
+            {
+              "id": "asia",
+              "label": "Asie",
+              "start": 0,
+              "end": 180,
+              "active": false
+            }
+          ],
+          "metrics": {
+            "momentum": "Neutre",
+            "cumDelta": 0.196,
+            "emaTrend": "Baissier",
+            "majorTrend": "Neutre",
+            "bbUpper": 163.121,
+            "bbMiddle": 163.043,
+            "bbLower": 162.966,
+            "macdHist": 0.0118
+          },
+          "ichimoku": {
+            "tenkan": 163.072,
+            "kijun": 163.075,
+            "senkouA": 163.074,
+            "senkouB": 163.075
+          },
+          "patterns": [],
+          "divergences": []
+        },
+        "H1": {
+          "pair": "USD/JPY",
+          "timeframe": "H1",
+          "structure": "Haussier",
+          "zone": "Premium",
+          "range_high": 163.313,
+          "range_low": 162.597,
+          "range_size": 0.716,
+          "live_price": 163.109,
+          "bos": null,
+          "choch": null,
+          "daily_bias": "Neutre",
+          "weekly_bias": "Neutre",
+          "rsi": 58.8,
+          "atr": 0.107,
+          "manipulation": {
+            "fakeBos": false,
+            "inducement": null,
+            "score": 100
+          },
+          "volume": {
+            "profile": [
+              {
+                "price": 162.7829317,
+                "volume": 100
+              },
+              {
+                "price": 162.94604085,
+                "volume": 110
+              },
+              {
+                "price": 163.10915,
+                "volume": 120
+              },
+              {
+                "price": 163.27225914999997,
+                "volume": 130
+              },
+              {
+                "price": 163.4353683,
+                "volume": 140
+              }
+            ],
+            "poc": 163.10915,
+            "delta": 8.755995243277816,
+            "score": 51.751199048655565
+          },
+          "cascade": {
+            "score": 70,
+            "details": [
+              {
+                "label": "M1",
+                "aligned": true
+              },
+              {
+                "label": "M5",
+                "aligned": false
+              },
+              {
+                "label": "M15",
+                "aligned": true
+              },
+              {
+                "label": "H1",
+                "aligned": true
+              },
+              {
+                "label": "H4",
+                "aligned": true
+              },
+              {
+                "label": "D1",
+                "aligned": true
+              },
+              {
+                "label": "W1",
+                "aligned": true
+              }
+            ]
+          },
+          "scs": {
+            "score": 29,
+            "details": [
+              {
+                "label": "BOS strength",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "CHoCH force",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "OB quality",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "FVG quality",
+                "value": "5",
+                "pts": 5
+              },
+              {
+                "label": "Multi-TF alignées",
+                "value": "6 / 4",
+                "pts": 18
+              },
+              {
+                "label": "Bias Daily/Weekly",
+                "value": "Neutre/Neutre",
+                "pts": 0
+              },
+              {
+                "label": "Killzone",
+                "value": "active",
+                "pts": 6
+              }
+            ]
+          },
+          "probabilities": {
+            "monteCarlo": 0.65,
+            "mlPrediction": null,
+            "finalProb": 0.65
+          },
+          "killZones": [
+            {
+              "id": "london",
+              "label": "London",
+              "start": 480,
+              "end": 600,
+              "active": false
+            },
+            {
+              "id": "ny",
+              "label": "New York",
+              "start": 780,
+              "end": 900,
+              "active": false
+            },
+            {
+              "id": "asia",
+              "label": "Asie",
+              "start": 0,
+              "end": 180,
+              "active": false
+            }
+          ],
+          "metrics": {
+            "momentum": "Neutre",
+            "cumDelta": -0.055,
+            "emaTrend": "Haussier",
+            "majorTrend": "Neutre",
+            "bbUpper": 163.28,
+            "bbMiddle": 163.123,
+            "bbLower": 162.966,
+            "macdHist": -0.0242
+          },
+          "ichimoku": {
+            "tenkan": 163.075,
+            "kijun": 163.016,
+            "senkouA": 163.046,
+            "senkouB": 162.79
+          },
+          "patterns": [
+            {
+              "type": "Doji",
+              "icon": "⏺"
+            }
+          ],
+          "divergences": []
+        },
+        "H4": {
+          "pair": "USD/JPY",
+          "timeframe": "H4",
+          "structure": "Haussier",
+          "zone": "Premium",
+          "range_high": 163.313,
+          "range_low": 162.268,
+          "range_size": 1.045,
+          "live_price": 163.109,
+          "bos": null,
+          "choch": null,
+          "daily_bias": "Neutre",
+          "weekly_bias": "Neutre",
+          "rsi": 69.5,
+          "atr": 0.181,
+          "manipulation": {
+            "fakeBos": false,
+            "inducement": null,
+            "score": 100
+          },
+          "volume": {
+            "profile": [
+              {
+                "price": 162.7823329,
+                "volume": 100
+              },
+              {
+                "price": 162.94544145,
+                "volume": 110
+              },
+              {
+                "price": 163.10855,
+                "volume": 120
+              },
+              {
+                "price": 163.27165854999998,
+                "volume": 130
+              },
+              {
+                "price": 163.43476710000002,
+                "volume": 140
+              }
+            ],
+            "poc": 163.10855,
+            "delta": 19.481711195866126,
+            "score": 53.89634223917322
+          },
+          "cascade": {
+            "score": 70,
+            "details": [
+              {
+                "label": "M1",
+                "aligned": true
+              },
+              {
+                "label": "M5",
+                "aligned": false
+              },
+              {
+                "label": "M15",
+                "aligned": true
+              },
+              {
+                "label": "H1",
+                "aligned": true
+              },
+              {
+                "label": "H4",
+                "aligned": true
+              },
+              {
+                "label": "D1",
+                "aligned": true
+              },
+              {
+                "label": "W1",
+                "aligned": true
+              }
+            ]
+          },
+          "scs": {
+            "score": 29,
+            "details": [
+              {
+                "label": "BOS strength",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "CHoCH force",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "OB quality",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "FVG quality",
+                "value": "5",
+                "pts": 5
+              },
+              {
+                "label": "Multi-TF alignées",
+                "value": "6 / 4",
+                "pts": 18
+              },
+              {
+                "label": "Bias Daily/Weekly",
+                "value": "Neutre/Neutre",
+                "pts": 0
+              },
+              {
+                "label": "Killzone",
+                "value": "active",
+                "pts": 6
+              }
+            ]
+          },
+          "probabilities": {
+            "monteCarlo": 0.5,
+            "mlPrediction": null,
+            "finalProb": 0.5
+          },
+          "killZones": [
+            {
+              "id": "london",
+              "label": "London",
+              "start": 480,
+              "end": 600,
+              "active": false
+            },
+            {
+              "id": "ny",
+              "label": "New York",
+              "start": 780,
+              "end": 900,
+              "active": false
+            },
+            {
+              "id": "asia",
+              "label": "Asie",
+              "start": 0,
+              "end": 180,
+              "active": false
+            }
+          ],
+          "metrics": {
+            "momentum": "Neutre",
+            "cumDelta": 0.375,
+            "emaTrend": "Haussier",
+            "majorTrend": "Neutre",
+            "bbUpper": 163.331,
+            "bbMiddle": 162.699,
+            "bbLower": 162.066,
+            "macdHist": 0.0417
+          },
+          "ichimoku": {
+            "tenkan": 162.894,
+            "kijun": 162.79,
+            "senkouA": 162.842,
+            "senkouB": 162.477
+          },
+          "patterns": [
+            {
+              "type": "Doji",
+              "icon": "⏺"
+            }
+          ],
+          "divergences": []
+        },
+        "D1": {
+          "pair": "USD/JPY",
+          "timeframe": "D1",
+          "structure": "Haussier",
+          "zone": "Premium",
+          "range_high": 163.313,
+          "range_low": 160.601,
+          "range_size": 2.711,
+          "live_price": 163.109,
+          "bos": "haussier",
+          "choch": null,
+          "daily_bias": "Neutre",
+          "weekly_bias": "Neutre",
+          "rsi": 67.2,
+          "atr": 0.582,
+          "manipulation": {
+            "fakeBos": false,
+            "inducement": null,
+            "score": 100
+          },
+          "volume": {
+            "profile": [
+              {
+                "price": 162.7823329,
+                "volume": 100
+              },
+              {
+                "price": 162.94544145,
+                "volume": 110
+              },
+              {
+                "price": 163.10855,
+                "volume": 120
+              },
+              {
+                "price": 163.27165854999998,
+                "volume": 130
+              },
+              {
+                "price": 163.43476710000002,
+                "volume": 140
+              }
+            ],
+            "poc": 163.10855,
+            "delta": 17.229565997972514,
+            "score": 53.4459131995945
+          },
+          "cascade": {
+            "score": 70,
+            "details": [
+              {
+                "label": "M1",
+                "aligned": true
+              },
+              {
+                "label": "M5",
+                "aligned": false
+              },
+              {
+                "label": "M15",
+                "aligned": true
+              },
+              {
+                "label": "H1",
+                "aligned": true
+              },
+              {
+                "label": "H4",
+                "aligned": true
+              },
+              {
+                "label": "D1",
+                "aligned": true
+              },
+              {
+                "label": "W1",
+                "aligned": true
+              }
+            ]
+          },
+          "scs": {
+            "score": 47,
+            "details": [
+              {
+                "label": "BOS strength",
+                "value": "10",
+                "pts": 10
+              },
+              {
+                "label": "CHoCH force",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "OB quality",
+                "value": "8",
+                "pts": 8
+              },
+              {
+                "label": "FVG quality",
+                "value": "5",
+                "pts": 5
+              },
+              {
+                "label": "Multi-TF alignées",
+                "value": "6 / 4",
+                "pts": 18
+              },
+              {
+                "label": "Bias Daily/Weekly",
+                "value": "Neutre/Neutre",
+                "pts": 0
+              },
+              {
+                "label": "Killzone",
+                "value": "active",
+                "pts": 6
+              }
+            ]
+          },
+          "probabilities": {
+            "monteCarlo": 0.5,
+            "mlPrediction": null,
+            "finalProb": 0.55
+          },
+          "killZones": [
+            {
+              "id": "london",
+              "label": "London",
+              "start": 480,
+              "end": 600,
+              "active": false
+            },
+            {
+              "id": "ny",
+              "label": "New York",
+              "start": 780,
+              "end": 900,
+              "active": false
+            },
+            {
+              "id": "asia",
+              "label": "Asie",
+              "start": 0,
+              "end": 180,
+              "active": false
+            }
+          ],
+          "metrics": {
+            "momentum": "Haussier",
+            "cumDelta": 1.272,
+            "emaTrend": "Haussier",
+            "majorTrend": "Neutre",
+            "bbUpper": 163.222,
+            "bbMiddle": 162.193,
+            "bbLower": 161.164,
+            "macdHist": 0.05
+          },
+          "ichimoku": {
+            "tenkan": 162.477,
+            "kijun": 161.957,
+            "senkouA": 162.217,
+            "senkouB": 161.316
+          },
+          "patterns": [],
+          "divergences": []
+        },
+        "W1": {
+          "pair": "USD/JPY",
+          "timeframe": "W1",
+          "structure": "Haussier",
+          "zone": "Premium",
+          "range_high": 163.313,
+          "range_low": 152.046,
+          "range_size": 11.266,
+          "live_price": 163.109,
+          "bos": "haussier",
+          "choch": "haussier",
+          "daily_bias": "Neutre",
+          "weekly_bias": "Neutre",
+          "rsi": 64.9,
+          "atr": 2.064,
+          "manipulation": {
+            "fakeBos": false,
+            "inducement": null,
+            "score": 100
+          },
+          "volume": {
+            "profile": [
+              {
+                "price": 162.7823329,
+                "volume": 100
+              },
+              {
+                "price": 162.94544145,
+                "volume": 110
+              },
+              {
+                "price": 163.10855,
+                "volume": 120
+              },
+              {
+                "price": 163.27165854999998,
+                "volume": 130
+              },
+              {
+                "price": 163.43476710000002,
+                "volume": 140
+              }
+            ],
+            "poc": 163.10855,
+            "delta": 14.926611965543145,
+            "score": 52.98532239310863
+          },
+          "cascade": {
+            "score": 70,
+            "details": [
+              {
+                "label": "M1",
+                "aligned": true
+              },
+              {
+                "label": "M5",
+                "aligned": false
+              },
+              {
+                "label": "M15",
+                "aligned": true
+              },
+              {
+                "label": "H1",
+                "aligned": true
+              },
+              {
+                "label": "H4",
+                "aligned": true
+              },
+              {
+                "label": "D1",
+                "aligned": true
+              },
+              {
+                "label": "W1",
+                "aligned": true
+              }
+            ]
+          },
+          "scs": {
+            "score": 52,
+            "details": [
+              {
+                "label": "BOS strength",
+                "value": "10",
+                "pts": 10
+              },
+              {
+                "label": "CHoCH force",
+                "value": "5",
+                "pts": 5
+              },
+              {
+                "label": "OB quality",
+                "value": "8",
+                "pts": 8
+              },
+              {
+                "label": "FVG quality",
+                "value": "5",
+                "pts": 5
+              },
+              {
+                "label": "Multi-TF alignées",
+                "value": "6 / 4",
+                "pts": 18
+              },
+              {
+                "label": "Bias Daily/Weekly",
+                "value": "Neutre/Neutre",
+                "pts": 0
+              },
+              {
+                "label": "Killzone",
+                "value": "active",
+                "pts": 6
+              }
+            ]
+          },
+          "probabilities": {
+            "monteCarlo": 0.6,
+            "mlPrediction": null,
+            "finalProb": 0.7
+          },
+          "killZones": [
+            {
+              "id": "london",
+              "label": "London",
+              "start": 480,
+              "end": 600,
+              "active": false
+            },
+            {
+              "id": "ny",
+              "label": "New York",
+              "start": 780,
+              "end": 900,
+              "active": false
+            },
+            {
+              "id": "asia",
+              "label": "Asie",
+              "start": 0,
+              "end": 180,
+              "active": false
+            }
+          ],
+          "metrics": {
+            "momentum": "Haussier",
+            "cumDelta": 1.83,
+            "emaTrend": "Baissier",
+            "majorTrend": "Neutre",
+            "bbUpper": 163.205,
+            "bbMiddle": 159.977,
+            "bbLower": 156.749,
+            "macdHist": 0.3371
+          },
+          "ichimoku": {
+            "tenkan": 161.032,
+            "kijun": 157.679,
+            "senkouA": 159.356,
+            "senkouB": null
+          },
+          "patterns": [],
+          "divergences": []
+        }
+      }
+    },
+    {
+      "id": "USDCAD",
+      "label": "USD/CAD",
+      "timeframes": {
+        "M1": {
+          "pair": "USD/CAD",
+          "timeframe": "M1",
+          "structure": "Haussier",
+          "zone": "Premium",
+          "range_high": 1.40931,
+          "range_low": 1.40861,
+          "range_size": 0.0007,
+          "live_price": 1.40918,
+          "bos": null,
+          "choch": null,
+          "daily_bias": "Neutre",
+          "weekly_bias": "Neutre",
+          "rsi": 60.8,
+          "atr": 0.00019,
+          "manipulation": {
+            "fakeBos": false,
+            "inducement": "bull",
+            "score": 70
+          },
+          "volume": {
+            "profile": [
+              {
+                "price": 1.40636164,
+                "volume": 100
+              },
+              {
+                "price": 1.40777082,
+                "volume": 110
+              },
+              {
+                "price": 1.40918,
+                "volume": 120
+              },
+              {
+                "price": 1.4105891799999999,
+                "volume": 130
+              },
+              {
+                "price": 1.4119983600000001,
+                "volume": 140
+              }
+            ],
+            "poc": 1.40918,
+            "delta": 10.80450434254309,
+            "score": 52.16090086850862
+          },
+          "cascade": {
+            "score": 50,
+            "details": [
+              {
+                "label": "M1",
+                "aligned": true
+              },
+              {
+                "label": "M5",
+                "aligned": false
+              },
+              {
+                "label": "M15",
+                "aligned": false
+              },
+              {
+                "label": "H1",
+                "aligned": true
+              },
+              {
+                "label": "H4",
+                "aligned": false
+              },
+              {
+                "label": "D1",
+                "aligned": true
+              },
+              {
+                "label": "W1",
+                "aligned": true
+              }
+            ]
+          },
+          "scs": {
+            "score": 23,
+            "details": [
+              {
+                "label": "BOS strength",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "CHoCH force",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "OB quality",
+                "value": "0",
+                "pts": 0
+              },
+              {
+                "label": "FVG quality",
+                "value": "5",
+                "pts": 5
+              },
+              {
+                "label": "Multi-TF alignées",
+                "value": "4 / 4",
+                "pts": 12
+              },
+              {
+                "label": "Bias Daily/Weekly",
+                "value": "Neutre/Neutre",
+                "pts": 0
+              },
+              {
+                "label": "Killzone",
+                "value": "active",
+                "pts": 6
+              }
+            ]
+          },
+          "probabilities": {
+            "monteCarlo": 0.5,
+            "mlPrediction": null,
+            "finalProb": 0.5
+          },
+          "killZones": [
+            {
+              "id": "london",
+              "label": "London",
+              "start": 480,
+              "end": 600,
+              "active": false
+            },
+            {
+              "id": "ny",
+              "label": "New York",
+              "start": 780,
+              "end": 900,
+              "active": false
+            },
+            {
+              "id": "asia",
+              "label": "Asie",
+              "start": 0,
+              "end": 180,
+              "active": false
+            }
+          ],
+          "metrics": {
+            "momentum": "Neutre",
+            "cumDelta": -0.00043,
+            "emaTrend": "Haussier",
+            "majorTrend": "Neutre",
+            "bbUpper": 1.40924,
+            "bbMiddle": 1.4089,
+            "bbLower": 1.40857,
+            "macdHist": 0.0
+          },
+          "ichimoku": {
+            "tenkan": 1.40892,
+            "kijun": 1.40896,
+            "senkouA": 1.40894,
+            "senkouB": 1.40874
+          },
+          "patterns": [],
+          "divergences": []
+        },
+        "M5": {
+          "pair": "USD/CAD",
+          "timeframe": "M5",
+          "structure": "Baissier",
+          "zone": "Discount",
+          "range_high": 1.41021,
+          "range_low": 1.40816,
+          "range_size": 0.00205,
+          "live_price": 1.40918,
+          "bos": null,
+          "choch": null,
+          "daily_bias": "Neutre",
+          "weekly_bias": "Neutre",
+          "rsi": 53.7,
+          "atr": 0.00034,
+          "manipulation": {
+            "fakeBos": false,
+            "inducement": null,
+            "score": 100
+          },
+          "volume": {
+            "profile": [
+              {
+                "price": 1.40636164,
+                "volume": 100
+              },
+              {
+                "price": 1.40777082,
+                "volume": 110
+              },
+              {
+                "price": 1.40918,
+                "volume": 120
+              },
+              {
+                "price": 1.4105891799999999,
+                "volume": 130
+              },
+              {
+                "price": 1.4119983600000001,
+                "volume": 140
+              }
+            ],
+            "poc": 1.40918,
+            "delta": 3.651185338755994,
+            "score": 50.7302370677512
+          },
+          "cascade": {
+            "score": 40,
+            "details": [
+              {
+                "label": "M1",
+                "aligned": false
+              },
+              {
+                "label": "M5",
+                "aligned": true
+              },
+              {
+                "label": "M15",
+                "aligned": true
+              },
+              {
+                "label": "H1",
+                "aligned": false
+              },
+              {
+                "label": "H4",
+                "aligned": true
+              },
+              {
+                "label": "D1",
+                "aligned": false
+              },
+              {
+                "label": "W1",
+                "aligned": false
               }
             ]
           },
@@ -1166,1550 +2686,20 @@
             }
           ],
           "metrics": {
-            "momentum": "Haussier",
-            "cumDelta": 207.2,
-            "emaTrend": "Haussier",
-            "majorTrend": "Neutre",
-            "bbUpper": 5018.66,
-            "bbMiddle": 4455.3,
-            "bbLower": 3891.94,
-            "macdHist": -60.5125
-          },
-          "ichimoku": {
-            "tenkan": 4272.05,
-            "kijun": 4773.34,
-            "senkouA": 4522.69,
-            "senkouB": null
-          },
-          "patterns": [],
-          "divergences": []
-        }
-      }
-    },
-    {
-      "id": "USDJPY",
-      "label": "USD/JPY",
-      "timeframes": {
-        "M1": {
-          "pair": "USD/JPY",
-          "timeframe": "M1",
-          "structure": "Baissier",
-          "zone": "Premium",
-          "range_high": 163.01,
-          "range_low": 162.952,
-          "range_size": 0.058,
-          "live_price": 163.0,
-          "bos": null,
-          "choch": null,
-          "daily_bias": "Neutre",
-          "weekly_bias": "Neutre",
-          "rsi": 55.2,
-          "atr": 0.012,
-          "manipulation": {
-            "fakeBos": false,
-            "inducement": null,
-            "score": 100
-          },
-          "volume": {
-            "profile": [
-              {
-                "price": 162.67402994,
-                "volume": 100
-              },
-              {
-                "price": 162.83702997,
-                "volume": 110
-              },
-              {
-                "price": 163.00003,
-                "volume": 120
-              },
-              {
-                "price": 163.16303003,
-                "volume": 130
-              },
-              {
-                "price": 163.32603006000002,
-                "volume": 140
-              }
-            ],
-            "poc": 163.00003,
-            "delta": 5.178741778534139,
-            "score": 51.03574835570683
-          },
-          "cascade": {
-            "score": 30,
-            "details": [
-              {
-                "label": "M1",
-                "aligned": true
-              },
-              {
-                "label": "M5",
-                "aligned": true
-              },
-              {
-                "label": "M15",
-                "aligned": false
-              },
-              {
-                "label": "H1",
-                "aligned": false
-              },
-              {
-                "label": "H4",
-                "aligned": false
-              },
-              {
-                "label": "D1",
-                "aligned": false
-              },
-              {
-                "label": "W1",
-                "aligned": false
-              }
-            ]
-          },
-          "scs": {
-            "score": 17,
-            "details": [
-              {
-                "label": "BOS strength",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "CHoCH force",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "OB quality",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "FVG quality",
-                "value": "5",
-                "pts": 5
-              },
-              {
-                "label": "Multi-TF alignées",
-                "value": "2 / 4",
-                "pts": 6
-              },
-              {
-                "label": "Bias Daily/Weekly",
-                "value": "Neutre/Neutre",
-                "pts": 0
-              },
-              {
-                "label": "Killzone",
-                "value": "active",
-                "pts": 6
-              }
-            ]
-          },
-          "probabilities": {
-            "monteCarlo": 0.5,
-            "mlPrediction": null,
-            "finalProb": 0.5
-          },
-          "killZones": [
-            {
-              "id": "london",
-              "label": "London",
-              "start": 480,
-              "end": 600,
-              "active": false
-            },
-            {
-              "id": "ny",
-              "label": "New York",
-              "start": 780,
-              "end": 900,
-              "active": false
-            },
-            {
-              "id": "asia",
-              "label": "Asie",
-              "start": 0,
-              "end": 180,
-              "active": false
-            }
-          ],
-          "metrics": {
             "momentum": "Neutre",
-            "cumDelta": -0.084,
+            "cumDelta": -0.00025,
             "emaTrend": "Baissier",
             "majorTrend": "Neutre",
-            "bbUpper": 163.012,
-            "bbMiddle": 162.989,
-            "bbLower": 162.966,
-            "macdHist": 0.0026
+            "bbUpper": 1.40945,
+            "bbMiddle": 1.40882,
+            "bbLower": 1.40818,
+            "macdHist": 0.0001
           },
           "ichimoku": {
-            "tenkan": 162.993,
-            "kijun": 162.981,
-            "senkouA": 162.987,
-            "senkouB": 162.997
-          },
-          "patterns": [
-            {
-              "type": "Shooting Star",
-              "icon": "⭐"
-            }
-          ],
-          "divergences": []
-        },
-        "M5": {
-          "pair": "USD/JPY",
-          "timeframe": "M5",
-          "structure": "Baissier",
-          "zone": "Discount",
-          "range_high": 163.313,
-          "range_low": 162.837,
-          "range_size": 0.475,
-          "live_price": 163.0,
-          "bos": null,
-          "choch": null,
-          "daily_bias": "Neutre",
-          "weekly_bias": "Neutre",
-          "rsi": 46.7,
-          "atr": 0.038,
-          "manipulation": {
-            "fakeBos": false,
-            "inducement": null,
-            "score": 100
-          },
-          "volume": {
-            "profile": [
-              {
-                "price": 162.67402994,
-                "volume": 100
-              },
-              {
-                "price": 162.83702997,
-                "volume": 110
-              },
-              {
-                "price": 163.00003,
-                "volume": 120
-              },
-              {
-                "price": 163.16303003,
-                "volume": 130
-              },
-              {
-                "price": 163.32603006000002,
-                "volume": 140
-              }
-            ],
-            "poc": 163.00003,
-            "delta": -3.346365762002648,
-            "score": 49.33072684759947
-          },
-          "cascade": {
-            "score": 30,
-            "details": [
-              {
-                "label": "M1",
-                "aligned": true
-              },
-              {
-                "label": "M5",
-                "aligned": true
-              },
-              {
-                "label": "M15",
-                "aligned": false
-              },
-              {
-                "label": "H1",
-                "aligned": false
-              },
-              {
-                "label": "H4",
-                "aligned": false
-              },
-              {
-                "label": "D1",
-                "aligned": false
-              },
-              {
-                "label": "W1",
-                "aligned": false
-              }
-            ]
-          },
-          "scs": {
-            "score": 17,
-            "details": [
-              {
-                "label": "BOS strength",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "CHoCH force",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "OB quality",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "FVG quality",
-                "value": "5",
-                "pts": 5
-              },
-              {
-                "label": "Multi-TF alignées",
-                "value": "2 / 4",
-                "pts": 6
-              },
-              {
-                "label": "Bias Daily/Weekly",
-                "value": "Neutre/Neutre",
-                "pts": 0
-              },
-              {
-                "label": "Killzone",
-                "value": "active",
-                "pts": 6
-              }
-            ]
-          },
-          "probabilities": {
-            "monteCarlo": 0.5,
-            "mlPrediction": null,
-            "finalProb": 0.55
-          },
-          "killZones": [
-            {
-              "id": "london",
-              "label": "London",
-              "start": 480,
-              "end": 600,
-              "active": false
-            },
-            {
-              "id": "ny",
-              "label": "New York",
-              "start": 780,
-              "end": 900,
-              "active": false
-            },
-            {
-              "id": "asia",
-              "label": "Asie",
-              "start": 0,
-              "end": 180,
-              "active": false
-            }
-          ],
-          "metrics": {
-            "momentum": "Neutre",
-            "cumDelta": -0.056,
-            "emaTrend": "Baissier",
-            "majorTrend": "Neutre",
-            "bbUpper": 163.101,
-            "bbMiddle": 163.016,
-            "bbLower": 162.931,
-            "macdHist": 0.0024
-          },
-          "ichimoku": {
-            "tenkan": 162.992,
-            "kijun": 163.075,
-            "senkouA": 163.033,
-            "senkouB": 163.075
-          },
-          "patterns": [],
-          "divergences": []
-        },
-        "M15": {
-          "pair": "USD/JPY",
-          "timeframe": "M15",
-          "structure": "Haussier",
-          "zone": "Discount",
-          "range_high": 163.313,
-          "range_low": 162.837,
-          "range_size": 0.475,
-          "live_price": 163.007,
-          "bos": null,
-          "choch": null,
-          "daily_bias": "Neutre",
-          "weekly_bias": "Neutre",
-          "rsi": 43.8,
-          "atr": 0.071,
-          "manipulation": {
-            "fakeBos": false,
-            "inducement": null,
-            "score": 100
-          },
-          "volume": {
-            "profile": [
-              {
-                "price": 162.6813353,
-                "volume": 100
-              },
-              {
-                "price": 162.84434265000002,
-                "volume": 110
-              },
-              {
-                "price": 163.00735,
-                "volume": 120
-              },
-              {
-                "price": 163.17035735,
-                "volume": 130
-              },
-              {
-                "price": 163.3333647,
-                "volume": 140
-              }
-            ],
-            "poc": 163.00735,
-            "delta": -6.240762121183579,
-            "score": 48.751847575763286
-          },
-          "cascade": {
-            "score": 60,
-            "details": [
-              {
-                "label": "M1",
-                "aligned": false
-              },
-              {
-                "label": "M5",
-                "aligned": false
-              },
-              {
-                "label": "M15",
-                "aligned": true
-              },
-              {
-                "label": "H1",
-                "aligned": true
-              },
-              {
-                "label": "H4",
-                "aligned": true
-              },
-              {
-                "label": "D1",
-                "aligned": true
-              },
-              {
-                "label": "W1",
-                "aligned": true
-              }
-            ]
-          },
-          "scs": {
-            "score": 26,
-            "details": [
-              {
-                "label": "BOS strength",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "CHoCH force",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "OB quality",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "FVG quality",
-                "value": "5",
-                "pts": 5
-              },
-              {
-                "label": "Multi-TF alignées",
-                "value": "5 / 4",
-                "pts": 15
-              },
-              {
-                "label": "Bias Daily/Weekly",
-                "value": "Neutre/Neutre",
-                "pts": 0
-              },
-              {
-                "label": "Killzone",
-                "value": "active",
-                "pts": 6
-              }
-            ]
-          },
-          "probabilities": {
-            "monteCarlo": 0.65,
-            "mlPrediction": null,
-            "finalProb": 0.7
-          },
-          "killZones": [
-            {
-              "id": "london",
-              "label": "London",
-              "start": 480,
-              "end": 600,
-              "active": false
-            },
-            {
-              "id": "ny",
-              "label": "New York",
-              "start": 780,
-              "end": 900,
-              "active": false
-            },
-            {
-              "id": "asia",
-              "label": "Asie",
-              "start": 0,
-              "end": 180,
-              "active": false
-            }
-          ],
-          "metrics": {
-            "momentum": "Neutre",
-            "cumDelta": 0.136,
-            "emaTrend": "Baissier",
-            "majorTrend": "Neutre",
-            "bbUpper": 163.226,
-            "bbMiddle": 163.07,
-            "bbLower": 162.914,
-            "macdHist": -0.0069
-          },
-          "ichimoku": {
-            "tenkan": 163.075,
-            "kijun": 163.075,
-            "senkouA": 163.075,
-            "senkouB": 163.075
-          },
-          "patterns": [],
-          "divergences": [
-            {
-              "type": "bullish",
-              "label": "Divergence Haussière RSI"
-            }
-          ]
-        },
-        "H1": {
-          "pair": "USD/JPY",
-          "timeframe": "H1",
-          "structure": "Haussier",
-          "zone": "Premium",
-          "range_high": 163.313,
-          "range_low": 162.474,
-          "range_size": 0.839,
-          "live_price": 163.007,
-          "bos": null,
-          "choch": null,
-          "daily_bias": "Neutre",
-          "weekly_bias": "Neutre",
-          "rsi": 52.2,
-          "atr": 0.117,
-          "manipulation": {
-            "fakeBos": false,
-            "inducement": null,
-            "score": 100
-          },
-          "volume": {
-            "profile": [
-              {
-                "price": 162.6813353,
-                "volume": 100
-              },
-              {
-                "price": 162.84434265000002,
-                "volume": 110
-              },
-              {
-                "price": 163.00735,
-                "volume": 120
-              },
-              {
-                "price": 163.17035735,
-                "volume": 130
-              },
-              {
-                "price": 163.3333647,
-                "volume": 140
-              }
-            ],
-            "poc": 163.00735,
-            "delta": 2.2315608207207873,
-            "score": 50.44631216414416
-          },
-          "cascade": {
-            "score": 60,
-            "details": [
-              {
-                "label": "M1",
-                "aligned": false
-              },
-              {
-                "label": "M5",
-                "aligned": false
-              },
-              {
-                "label": "M15",
-                "aligned": true
-              },
-              {
-                "label": "H1",
-                "aligned": true
-              },
-              {
-                "label": "H4",
-                "aligned": true
-              },
-              {
-                "label": "D1",
-                "aligned": true
-              },
-              {
-                "label": "W1",
-                "aligned": true
-              }
-            ]
-          },
-          "scs": {
-            "score": 26,
-            "details": [
-              {
-                "label": "BOS strength",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "CHoCH force",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "OB quality",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "FVG quality",
-                "value": "5",
-                "pts": 5
-              },
-              {
-                "label": "Multi-TF alignées",
-                "value": "5 / 4",
-                "pts": 15
-              },
-              {
-                "label": "Bias Daily/Weekly",
-                "value": "Neutre/Neutre",
-                "pts": 0
-              },
-              {
-                "label": "Killzone",
-                "value": "active",
-                "pts": 6
-              }
-            ]
-          },
-          "probabilities": {
-            "monteCarlo": 0.65,
-            "mlPrediction": null,
-            "finalProb": 0.65
-          },
-          "killZones": [
-            {
-              "id": "london",
-              "label": "London",
-              "start": 480,
-              "end": 600,
-              "active": false
-            },
-            {
-              "id": "ny",
-              "label": "New York",
-              "start": 780,
-              "end": 900,
-              "active": false
-            },
-            {
-              "id": "asia",
-              "label": "Asie",
-              "start": 0,
-              "end": 180,
-              "active": false
-            }
-          ],
-          "metrics": {
-            "momentum": "Baissier",
-            "cumDelta": 0.006,
-            "emaTrend": "Haussier",
-            "majorTrend": "Neutre",
-            "bbUpper": 163.287,
-            "bbMiddle": 163.11,
-            "bbLower": 162.933,
-            "macdHist": -0.0436
-          },
-          "ichimoku": {
-            "tenkan": 163.075,
-            "kijun": 162.955,
-            "senkouA": 163.015,
-            "senkouB": 162.79
-          },
-          "patterns": [],
-          "divergences": []
-        },
-        "H4": {
-          "pair": "USD/JPY",
-          "timeframe": "H4",
-          "structure": "Haussier",
-          "zone": "Premium",
-          "range_high": 163.313,
-          "range_low": 162.268,
-          "range_size": 1.045,
-          "live_price": 163.007,
-          "bos": null,
-          "choch": null,
-          "daily_bias": "Neutre",
-          "weekly_bias": "Neutre",
-          "rsi": 66.7,
-          "atr": 0.184,
-          "manipulation": {
-            "fakeBos": false,
-            "inducement": null,
-            "score": 100
-          },
-          "volume": {
-            "profile": [
-              {
-                "price": 162.6813353,
-                "volume": 100
-              },
-              {
-                "price": 162.84434265000002,
-                "volume": 110
-              },
-              {
-                "price": 163.00735,
-                "volume": 120
-              },
-              {
-                "price": 163.17035735,
-                "volume": 130
-              },
-              {
-                "price": 163.3333647,
-                "volume": 140
-              }
-            ],
-            "poc": 163.00735,
-            "delta": 16.71044591126322,
-            "score": 53.34208918225264
-          },
-          "cascade": {
-            "score": 60,
-            "details": [
-              {
-                "label": "M1",
-                "aligned": false
-              },
-              {
-                "label": "M5",
-                "aligned": false
-              },
-              {
-                "label": "M15",
-                "aligned": true
-              },
-              {
-                "label": "H1",
-                "aligned": true
-              },
-              {
-                "label": "H4",
-                "aligned": true
-              },
-              {
-                "label": "D1",
-                "aligned": true
-              },
-              {
-                "label": "W1",
-                "aligned": true
-              }
-            ]
-          },
-          "scs": {
-            "score": 26,
-            "details": [
-              {
-                "label": "BOS strength",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "CHoCH force",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "OB quality",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "FVG quality",
-                "value": "5",
-                "pts": 5
-              },
-              {
-                "label": "Multi-TF alignées",
-                "value": "5 / 4",
-                "pts": 15
-              },
-              {
-                "label": "Bias Daily/Weekly",
-                "value": "Neutre/Neutre",
-                "pts": 0
-              },
-              {
-                "label": "Killzone",
-                "value": "active",
-                "pts": 6
-              }
-            ]
-          },
-          "probabilities": {
-            "monteCarlo": 0.5,
-            "mlPrediction": null,
-            "finalProb": 0.5
-          },
-          "killZones": [
-            {
-              "id": "london",
-              "label": "London",
-              "start": 480,
-              "end": 600,
-              "active": false
-            },
-            {
-              "id": "ny",
-              "label": "New York",
-              "start": 780,
-              "end": 900,
-              "active": false
-            },
-            {
-              "id": "asia",
-              "label": "Asie",
-              "start": 0,
-              "end": 180,
-              "active": false
-            }
-          ],
-          "metrics": {
-            "momentum": "Baissier",
-            "cumDelta": 0.46,
-            "emaTrend": "Haussier",
-            "majorTrend": "Neutre",
-            "bbUpper": 163.261,
-            "bbMiddle": 162.659,
-            "bbLower": 162.057,
-            "macdHist": 0.0436
-          },
-          "ichimoku": {
-            "tenkan": 162.884,
-            "kijun": 162.79,
-            "senkouA": 162.837,
-            "senkouB": 162.477
-          },
-          "patterns": [],
-          "divergences": []
-        },
-        "D1": {
-          "pair": "USD/JPY",
-          "timeframe": "D1",
-          "structure": "Haussier",
-          "zone": "Premium",
-          "range_high": 163.313,
-          "range_low": 160.601,
-          "range_size": 2.711,
-          "live_price": 163.007,
-          "bos": "haussier",
-          "choch": null,
-          "daily_bias": "Neutre",
-          "weekly_bias": "Neutre",
-          "rsi": 65.2,
-          "atr": 0.582,
-          "manipulation": {
-            "fakeBos": false,
-            "inducement": null,
-            "score": 100
-          },
-          "volume": {
-            "profile": [
-              {
-                "price": 162.6813353,
-                "volume": 100
-              },
-              {
-                "price": 162.84434265000002,
-                "volume": 110
-              },
-              {
-                "price": 163.00735,
-                "volume": 120
-              },
-              {
-                "price": 163.17035735,
-                "volume": 130
-              },
-              {
-                "price": 163.3333647,
-                "volume": 140
-              }
-            ],
-            "poc": 163.00735,
-            "delta": 15.184926545446615,
-            "score": 53.036985309089324
-          },
-          "cascade": {
-            "score": 60,
-            "details": [
-              {
-                "label": "M1",
-                "aligned": false
-              },
-              {
-                "label": "M5",
-                "aligned": false
-              },
-              {
-                "label": "M15",
-                "aligned": true
-              },
-              {
-                "label": "H1",
-                "aligned": true
-              },
-              {
-                "label": "H4",
-                "aligned": true
-              },
-              {
-                "label": "D1",
-                "aligned": true
-              },
-              {
-                "label": "W1",
-                "aligned": true
-              }
-            ]
-          },
-          "scs": {
-            "score": 44,
-            "details": [
-              {
-                "label": "BOS strength",
-                "value": "10",
-                "pts": 10
-              },
-              {
-                "label": "CHoCH force",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "OB quality",
-                "value": "8",
-                "pts": 8
-              },
-              {
-                "label": "FVG quality",
-                "value": "5",
-                "pts": 5
-              },
-              {
-                "label": "Multi-TF alignées",
-                "value": "5 / 4",
-                "pts": 15
-              },
-              {
-                "label": "Bias Daily/Weekly",
-                "value": "Neutre/Neutre",
-                "pts": 0
-              },
-              {
-                "label": "Killzone",
-                "value": "active",
-                "pts": 6
-              }
-            ]
-          },
-          "probabilities": {
-            "monteCarlo": 0.5,
-            "mlPrediction": null,
-            "finalProb": 0.55
-          },
-          "killZones": [
-            {
-              "id": "london",
-              "label": "London",
-              "start": 480,
-              "end": 600,
-              "active": false
-            },
-            {
-              "id": "ny",
-              "label": "New York",
-              "start": 780,
-              "end": 900,
-              "active": false
-            },
-            {
-              "id": "asia",
-              "label": "Asie",
-              "start": 0,
-              "end": 180,
-              "active": false
-            }
-          ],
-          "metrics": {
-            "momentum": "Haussier",
-            "cumDelta": 1.272,
-            "emaTrend": "Haussier",
-            "majorTrend": "Neutre",
-            "bbUpper": 163.2,
-            "bbMiddle": 162.188,
-            "bbLower": 161.176,
-            "macdHist": 0.0435
-          },
-          "ichimoku": {
-            "tenkan": 162.477,
-            "kijun": 161.957,
-            "senkouA": 162.217,
-            "senkouB": 161.316
-          },
-          "patterns": [],
-          "divergences": []
-        },
-        "W1": {
-          "pair": "USD/JPY",
-          "timeframe": "W1",
-          "structure": "Haussier",
-          "zone": "Premium",
-          "range_high": 163.313,
-          "range_low": 152.046,
-          "range_size": 11.266,
-          "live_price": 163.007,
-          "bos": null,
-          "choch": null,
-          "daily_bias": "Neutre",
-          "weekly_bias": "Neutre",
-          "rsi": 64.7,
-          "atr": 2.064,
-          "manipulation": {
-            "fakeBos": false,
-            "inducement": null,
-            "score": 100
-          },
-          "volume": {
-            "profile": [
-              {
-                "price": 162.6813353,
-                "volume": 100
-              },
-              {
-                "price": 162.84434265000002,
-                "volume": 110
-              },
-              {
-                "price": 163.00735,
-                "volume": 120
-              },
-              {
-                "price": 163.17035735,
-                "volume": 130
-              },
-              {
-                "price": 163.3333647,
-                "volume": 140
-              }
-            ],
-            "poc": 163.00735,
-            "delta": 14.657426125996182,
-            "score": 52.93148522519924
-          },
-          "cascade": {
-            "score": 60,
-            "details": [
-              {
-                "label": "M1",
-                "aligned": false
-              },
-              {
-                "label": "M5",
-                "aligned": false
-              },
-              {
-                "label": "M15",
-                "aligned": true
-              },
-              {
-                "label": "H1",
-                "aligned": true
-              },
-              {
-                "label": "H4",
-                "aligned": true
-              },
-              {
-                "label": "D1",
-                "aligned": true
-              },
-              {
-                "label": "W1",
-                "aligned": true
-              }
-            ]
-          },
-          "scs": {
-            "score": 26,
-            "details": [
-              {
-                "label": "BOS strength",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "CHoCH force",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "OB quality",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "FVG quality",
-                "value": "5",
-                "pts": 5
-              },
-              {
-                "label": "Multi-TF alignées",
-                "value": "5 / 4",
-                "pts": 15
-              },
-              {
-                "label": "Bias Daily/Weekly",
-                "value": "Neutre/Neutre",
-                "pts": 0
-              },
-              {
-                "label": "Killzone",
-                "value": "active",
-                "pts": 6
-              }
-            ]
-          },
-          "probabilities": {
-            "monteCarlo": 0.5,
-            "mlPrediction": null,
-            "finalProb": 0.5
-          },
-          "killZones": [
-            {
-              "id": "london",
-              "label": "London",
-              "start": 480,
-              "end": 600,
-              "active": false
-            },
-            {
-              "id": "ny",
-              "label": "New York",
-              "start": 780,
-              "end": 900,
-              "active": false
-            },
-            {
-              "id": "asia",
-              "label": "Asie",
-              "start": 0,
-              "end": 180,
-              "active": false
-            }
-          ],
-          "metrics": {
-            "momentum": "Haussier",
-            "cumDelta": 1.83,
-            "emaTrend": "Baissier",
-            "majorTrend": "Neutre",
-            "bbUpper": 163.181,
-            "bbMiddle": 159.972,
-            "bbLower": 156.763,
-            "macdHist": 0.3307
-          },
-          "ichimoku": {
-            "tenkan": 161.032,
-            "kijun": 157.679,
-            "senkouA": 159.356,
-            "senkouB": null
-          },
-          "patterns": [],
-          "divergences": []
-        }
-      }
-    },
-    {
-      "id": "USDCAD",
-      "label": "USD/CAD",
-      "timeframes": {
-        "M1": {
-          "pair": "USD/CAD",
-          "timeframe": "M1",
-          "structure": "Haussier",
-          "zone": "Premium",
-          "range_high": 1.40963,
-          "range_low": 1.40916,
-          "range_size": 0.00047,
-          "live_price": 1.40957,
-          "bos": null,
-          "choch": "haussier",
-          "daily_bias": "Neutre",
-          "weekly_bias": "Neutre",
-          "rsi": 56.5,
-          "atr": 9e-05,
-          "manipulation": {
-            "fakeBos": false,
-            "inducement": null,
-            "score": 100
-          },
-          "volume": {
-            "profile": [
-              {
-                "price": 1.40675086,
-                "volume": 100
-              },
-              {
-                "price": 1.40816043,
-                "volume": 110
-              },
-              {
-                "price": 1.40957,
-                "volume": 120
-              },
-              {
-                "price": 1.4109795699999998,
-                "volume": 130
-              },
-              {
-                "price": 1.41238914,
-                "volume": 140
-              }
-            ],
-            "poc": 1.40957,
-            "delta": 6.542366137268225,
-            "score": 51.308473227453646
-          },
-          "cascade": {
-            "score": 60,
-            "details": [
-              {
-                "label": "M1",
-                "aligned": true
-              },
-              {
-                "label": "M5",
-                "aligned": false
-              },
-              {
-                "label": "M15",
-                "aligned": true
-              },
-              {
-                "label": "H1",
-                "aligned": true
-              },
-              {
-                "label": "H4",
-                "aligned": false
-              },
-              {
-                "label": "D1",
-                "aligned": true
-              },
-              {
-                "label": "W1",
-                "aligned": true
-              }
-            ]
-          },
-          "scs": {
-            "score": 31,
-            "details": [
-              {
-                "label": "BOS strength",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "CHoCH force",
-                "value": "5",
-                "pts": 5
-              },
-              {
-                "label": "OB quality",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "FVG quality",
-                "value": "5",
-                "pts": 5
-              },
-              {
-                "label": "Multi-TF alignées",
-                "value": "5 / 4",
-                "pts": 15
-              },
-              {
-                "label": "Bias Daily/Weekly",
-                "value": "Neutre/Neutre",
-                "pts": 0
-              },
-              {
-                "label": "Killzone",
-                "value": "active",
-                "pts": 6
-              }
-            ]
-          },
-          "probabilities": {
-            "monteCarlo": 0.65,
-            "mlPrediction": null,
-            "finalProb": 0.7
-          },
-          "killZones": [
-            {
-              "id": "london",
-              "label": "London",
-              "start": 480,
-              "end": 600,
-              "active": false
-            },
-            {
-              "id": "ny",
-              "label": "New York",
-              "start": 780,
-              "end": 900,
-              "active": false
-            },
-            {
-              "id": "asia",
-              "label": "Asie",
-              "start": 0,
-              "end": 180,
-              "active": false
-            }
-          ],
-          "metrics": {
-            "momentum": "Neutre",
-            "cumDelta": -0.00012,
-            "emaTrend": "Haussier",
-            "majorTrend": "Neutre",
-            "bbUpper": 1.40968,
-            "bbMiddle": 1.4095,
-            "bbLower": 1.40932,
-            "macdHist": -0.0
-          },
-          "ichimoku": {
-            "tenkan": 1.40953,
-            "kijun": 1.40944,
-            "senkouA": 1.40949,
-            "senkouB": 1.40939
-          },
-          "patterns": [
-            {
-              "type": "Doji",
-              "icon": "⏺"
-            }
-          ],
-          "divergences": []
-        },
-        "M5": {
-          "pair": "USD/CAD",
-          "timeframe": "M5",
-          "structure": "Baissier",
-          "zone": "Premium",
-          "range_high": 1.40966,
-          "range_low": 1.40832,
-          "range_size": 0.00134,
-          "live_price": 1.40957,
-          "bos": null,
-          "choch": null,
-          "daily_bias": "Neutre",
-          "weekly_bias": "Neutre",
-          "rsi": 54.4,
-          "atr": 0.00022,
-          "manipulation": {
-            "fakeBos": false,
-            "inducement": null,
-            "score": 100
-          },
-          "volume": {
-            "profile": [
-              {
-                "price": 1.40675086,
-                "volume": 100
-              },
-              {
-                "price": 1.40816043,
-                "volume": 110
-              },
-              {
-                "price": 1.40957,
-                "volume": 120
-              },
-              {
-                "price": 1.4109795699999998,
-                "volume": 130
-              },
-              {
-                "price": 1.41238914,
-                "volume": 140
-              }
-            ],
-            "poc": 1.40957,
-            "delta": 4.439697334134898,
-            "score": 50.88793946682698
-          },
-          "cascade": {
-            "score": 30,
-            "details": [
-              {
-                "label": "M1",
-                "aligned": false
-              },
-              {
-                "label": "M5",
-                "aligned": true
-              },
-              {
-                "label": "M15",
-                "aligned": false
-              },
-              {
-                "label": "H1",
-                "aligned": false
-              },
-              {
-                "label": "H4",
-                "aligned": true
-              },
-              {
-                "label": "D1",
-                "aligned": false
-              },
-              {
-                "label": "W1",
-                "aligned": false
-              }
-            ]
-          },
-          "scs": {
-            "score": 17,
-            "details": [
-              {
-                "label": "BOS strength",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "CHoCH force",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "OB quality",
-                "value": "0",
-                "pts": 0
-              },
-              {
-                "label": "FVG quality",
-                "value": "5",
-                "pts": 5
-              },
-              {
-                "label": "Multi-TF alignées",
-                "value": "2 / 4",
-                "pts": 6
-              },
-              {
-                "label": "Bias Daily/Weekly",
-                "value": "Neutre/Neutre",
-                "pts": 0
-              },
-              {
-                "label": "Killzone",
-                "value": "active",
-                "pts": 6
-              }
-            ]
-          },
-          "probabilities": {
-            "monteCarlo": 0.5,
-            "mlPrediction": null,
-            "finalProb": 0.5
-          },
-          "killZones": [
-            {
-              "id": "london",
-              "label": "London",
-              "start": 480,
-              "end": 600,
-              "active": false
-            },
-            {
-              "id": "ny",
-              "label": "New York",
-              "start": 780,
-              "end": 900,
-              "active": false
-            },
-            {
-              "id": "asia",
-              "label": "Asie",
-              "start": 0,
-              "end": 180,
-              "active": false
-            }
-          ],
-          "metrics": {
-            "momentum": "Neutre",
-            "cumDelta": 3e-05,
-            "emaTrend": "Baissier",
-            "majorTrend": "Neutre",
-            "bbUpper": 1.40961,
-            "bbMiddle": 1.40942,
-            "bbLower": 1.40923,
-            "macdHist": 0.0
-          },
-          "ichimoku": {
-            "tenkan": 1.40939,
-            "kijun": 1.40899,
-            "senkouA": 1.40919,
-            "senkouB": 1.40951
+            "tenkan": 1.40874,
+            "kijun": 1.40913,
+            "senkouA": 1.40893,
+            "senkouB": 1.40935
           },
           "patterns": [],
           "divergences": []
@@ -2717,60 +2707,60 @@
         "M15": {
           "pair": "USD/CAD",
           "timeframe": "M15",
-          "structure": "Haussier",
+          "structure": "Baissier",
           "zone": "Discount",
-          "range_high": 1.41084,
-          "range_low": 1.40832,
-          "range_size": 0.00252,
-          "live_price": 1.40957,
+          "range_high": 1.41053,
+          "range_low": 1.40816,
+          "range_size": 0.00237,
+          "live_price": 1.40918,
           "bos": null,
           "choch": null,
           "daily_bias": "Neutre",
           "weekly_bias": "Neutre",
           "rsi": 45.6,
-          "atr": 0.0004,
+          "atr": 0.00049,
           "manipulation": {
-            "fakeBos": false,
+            "fakeBos": true,
             "inducement": null,
-            "score": 100
+            "score": 60
           },
           "volume": {
             "profile": [
               {
-                "price": 1.40675086,
+                "price": 1.40636164,
                 "volume": 100
               },
               {
-                "price": 1.40816043,
+                "price": 1.40777082,
                 "volume": 110
               },
               {
-                "price": 1.40957,
+                "price": 1.40918,
                 "volume": 120
               },
               {
-                "price": 1.4109795699999998,
+                "price": 1.4105891799999999,
                 "volume": 130
               },
               {
-                "price": 1.41238914,
+                "price": 1.4119983600000001,
                 "volume": 140
               }
             ],
-            "poc": 1.40957,
-            "delta": -4.445626503631345,
-            "score": 49.11087469927373
+            "poc": 1.40918,
+            "delta": -4.4175971292089,
+            "score": 49.11648057415822
           },
           "cascade": {
-            "score": 60,
+            "score": 40,
             "details": [
               {
                 "label": "M1",
-                "aligned": true
+                "aligned": false
               },
               {
                 "label": "M5",
-                "aligned": false
+                "aligned": true
               },
               {
                 "label": "M15",
@@ -2778,24 +2768,24 @@
               },
               {
                 "label": "H1",
-                "aligned": true
-              },
-              {
-                "label": "H4",
                 "aligned": false
               },
               {
-                "label": "D1",
+                "label": "H4",
                 "aligned": true
               },
               {
+                "label": "D1",
+                "aligned": false
+              },
+              {
                 "label": "W1",
-                "aligned": true
+                "aligned": false
               }
             ]
           },
           "scs": {
-            "score": 26,
+            "score": 20,
             "details": [
               {
                 "label": "BOS strength",
@@ -2819,8 +2809,8 @@
               },
               {
                 "label": "Multi-TF alignées",
-                "value": "5 / 4",
-                "pts": 15
+                "value": "3 / 4",
+                "pts": 9
               },
               {
                 "label": "Bias Daily/Weekly",
@@ -2835,9 +2825,9 @@
             ]
           },
           "probabilities": {
-            "monteCarlo": 0.65,
+            "monteCarlo": 0.5,
             "mlPrediction": null,
-            "finalProb": 0.7
+            "finalProb": 0.55
           },
           "killZones": [
             {
@@ -2864,19 +2854,19 @@
           ],
           "metrics": {
             "momentum": "Neutre",
-            "cumDelta": 0.00174,
+            "cumDelta": 0.00224,
             "emaTrend": "Baissier",
             "majorTrend": "Neutre",
-            "bbUpper": 1.41095,
-            "bbMiddle": 1.40975,
-            "bbLower": 1.40856,
-            "macdHist": 0.0
+            "bbUpper": 1.41055,
+            "bbMiddle": 1.40944,
+            "bbLower": 1.40832,
+            "macdHist": -0.0
           },
           "ichimoku": {
-            "tenkan": 1.40899,
-            "kijun": 1.40958,
-            "senkouA": 1.40929,
-            "senkouB": 1.40975
+            "tenkan": 1.40903,
+            "kijun": 1.40935,
+            "senkouA": 1.40919,
+            "senkouB": 1.4095
           },
           "patterns": [
             {
@@ -2894,13 +2884,13 @@
           "range_high": 1.41118,
           "range_low": 1.40548,
           "range_size": 0.0057,
-          "live_price": 1.4096,
+          "live_price": 1.40918,
           "bos": null,
           "choch": null,
           "daily_bias": "Neutre",
           "weekly_bias": "Neutre",
-          "rsi": 53.5,
-          "atr": 0.00079,
+          "rsi": 48.9,
+          "atr": 0.00086,
           "manipulation": {
             "fakeBos": false,
             "inducement": null,
@@ -2909,32 +2899,32 @@
           "volume": {
             "profile": [
               {
-                "price": 1.4067808,
+                "price": 1.40636164,
                 "volume": 100
               },
               {
-                "price": 1.4081904,
+                "price": 1.40777082,
                 "volume": 110
               },
               {
-                "price": 1.4096,
+                "price": 1.40918,
                 "volume": 120
               },
               {
-                "price": 1.4110095999999999,
+                "price": 1.4105891799999999,
                 "volume": 130
               },
               {
-                "price": 1.4124192,
+                "price": 1.4119983600000001,
                 "volume": 140
               }
             ],
-            "poc": 1.4096,
-            "delta": 3.4822746220099106,
-            "score": 50.69645492440198
+            "poc": 1.40918,
+            "delta": -1.063893503290835,
+            "score": 49.78722129934183
           },
           "cascade": {
-            "score": 60,
+            "score": 50,
             "details": [
               {
                 "label": "M1",
@@ -2946,7 +2936,7 @@
               },
               {
                 "label": "M15",
-                "aligned": true
+                "aligned": false
               },
               {
                 "label": "H1",
@@ -2967,7 +2957,7 @@
             ]
           },
           "scs": {
-            "score": 26,
+            "score": 23,
             "details": [
               {
                 "label": "BOS strength",
@@ -2991,8 +2981,8 @@
               },
               {
                 "label": "Multi-TF alignées",
-                "value": "5 / 4",
-                "pts": 15
+                "value": "4 / 4",
+                "pts": 12
               },
               {
                 "label": "Bias Daily/Weekly",
@@ -3035,22 +3025,27 @@
             }
           ],
           "metrics": {
-            "momentum": "Baissier",
-            "cumDelta": -0.00049,
+            "momentum": "Neutre",
+            "cumDelta": -0.00145,
             "emaTrend": "Haussier",
             "majorTrend": "Neutre",
-            "bbUpper": 1.41145,
-            "bbMiddle": 1.41026,
-            "bbLower": 1.40908,
+            "bbUpper": 1.41157,
+            "bbMiddle": 1.41018,
+            "bbLower": 1.40879,
             "macdHist": -0.0003
           },
           "ichimoku": {
-            "tenkan": 1.40958,
-            "kijun": 1.40833,
-            "senkouA": 1.40896,
-            "senkouB": 1.4058
+            "tenkan": 1.40943,
+            "kijun": 1.40891,
+            "senkouA": 1.40917,
+            "senkouB": 1.4066
           },
-          "patterns": [],
+          "patterns": [
+            {
+              "type": "Hammer",
+              "icon": "🔨"
+            }
+          ],
           "divergences": []
         },
         "H4": {
@@ -3061,13 +3056,13 @@
           "range_high": 1.41118,
           "range_low": 1.4001,
           "range_size": 0.01108,
-          "live_price": 1.4096,
+          "live_price": 1.40918,
           "bos": null,
           "choch": null,
           "daily_bias": "Neutre",
           "weekly_bias": "Neutre",
-          "rsi": 64.0,
-          "atr": 0.00165,
+          "rsi": 61.6,
+          "atr": 0.0017,
           "manipulation": {
             "fakeBos": false,
             "inducement": null,
@@ -3076,32 +3071,32 @@
           "volume": {
             "profile": [
               {
-                "price": 1.4067808,
+                "price": 1.40636164,
                 "volume": 100
               },
               {
-                "price": 1.4081904,
+                "price": 1.40777082,
                 "volume": 110
               },
               {
-                "price": 1.4096,
+                "price": 1.40918,
                 "volume": 120
               },
               {
-                "price": 1.4110095999999999,
+                "price": 1.4105891799999999,
                 "volume": 130
               },
               {
-                "price": 1.4124192,
+                "price": 1.4119983600000001,
                 "volume": 140
               }
             ],
-            "poc": 1.4096,
-            "delta": 13.976415130203563,
-            "score": 52.795283026040714
+            "poc": 1.40918,
+            "delta": 11.632619772876744,
+            "score": 52.32652395457535
           },
           "cascade": {
-            "score": 30,
+            "score": 40,
             "details": [
               {
                 "label": "M1",
@@ -3113,7 +3108,7 @@
               },
               {
                 "label": "M15",
-                "aligned": false
+                "aligned": true
               },
               {
                 "label": "H1",
@@ -3134,7 +3129,7 @@
             ]
           },
           "scs": {
-            "score": 17,
+            "score": 20,
             "details": [
               {
                 "label": "BOS strength",
@@ -3158,8 +3153,8 @@
               },
               {
                 "label": "Multi-TF alignées",
-                "value": "2 / 4",
-                "pts": 6
+                "value": "3 / 4",
+                "pts": 9
               },
               {
                 "label": "Bias Daily/Weekly",
@@ -3203,21 +3198,26 @@
           ],
           "metrics": {
             "momentum": "Baissier",
-            "cumDelta": -0.01162,
+            "cumDelta": -0.01173,
             "emaTrend": "Haussier",
             "majorTrend": "Neutre",
-            "bbUpper": 1.41298,
-            "bbMiddle": 1.40597,
-            "bbLower": 1.39896,
-            "macdHist": 0.0006
+            "bbUpper": 1.41317,
+            "bbMiddle": 1.40628,
+            "bbLower": 1.3994,
+            "macdHist": 0.0004
           },
           "ichimoku": {
             "tenkan": 1.40833,
-            "kijun": 1.40564,
-            "senkouA": 1.40699,
-            "senkouB": 1.40792
+            "kijun": 1.4058,
+            "senkouA": 1.40707,
+            "senkouB": 1.40749
           },
-          "patterns": [],
+          "patterns": [
+            {
+              "type": "Hammer",
+              "icon": "🔨"
+            }
+          ],
           "divergences": []
         },
         "D1": {
@@ -3228,13 +3228,13 @@
           "range_high": 1.42486,
           "range_low": 1.4001,
           "range_size": 0.02476,
-          "live_price": 1.4096,
+          "live_price": 1.40922,
           "bos": null,
           "choch": null,
           "daily_bias": "Neutre",
           "weekly_bias": "Neutre",
-          "rsi": 49.1,
-          "atr": 0.00461,
+          "rsi": 48.4,
+          "atr": 0.00463,
           "manipulation": {
             "fakeBos": false,
             "inducement": null,
@@ -3243,32 +3243,32 @@
           "volume": {
             "profile": [
               {
-                "price": 1.4067808,
+                "price": 1.40640156,
                 "volume": 100
               },
               {
-                "price": 1.4081904,
+                "price": 1.40781078,
                 "volume": 110
               },
               {
-                "price": 1.4096,
+                "price": 1.40922,
                 "volume": 120
               },
               {
-                "price": 1.4110095999999999,
+                "price": 1.4106292199999997,
                 "volume": 130
               },
               {
-                "price": 1.4124192,
+                "price": 1.41203844,
                 "volume": 140
               }
             ],
-            "poc": 1.4096,
-            "delta": -0.9215266521795655,
-            "score": 49.81569466956409
+            "poc": 1.40922,
+            "delta": -1.5866956417738933,
+            "score": 49.68266087164522
           },
           "cascade": {
-            "score": 60,
+            "score": 50,
             "details": [
               {
                 "label": "M1",
@@ -3280,7 +3280,7 @@
               },
               {
                 "label": "M15",
-                "aligned": true
+                "aligned": false
               },
               {
                 "label": "H1",
@@ -3301,7 +3301,7 @@
             ]
           },
           "scs": {
-            "score": 26,
+            "score": 23,
             "details": [
               {
                 "label": "BOS strength",
@@ -3325,8 +3325,8 @@
               },
               {
                 "label": "Multi-TF alignées",
-                "value": "5 / 4",
-                "pts": 15
+                "value": "4 / 4",
+                "pts": 12
               },
               {
                 "label": "Bias Daily/Weekly",
@@ -3374,8 +3374,8 @@
             "emaTrend": "Haussier",
             "majorTrend": "Neutre",
             "bbUpper": 1.42599,
-            "bbMiddle": 1.41226,
-            "bbLower": 1.39854,
+            "bbMiddle": 1.41224,
+            "bbLower": 1.3985,
             "macdHist": -0.0008
           },
           "ichimoku": {
@@ -3395,12 +3395,12 @@
           "range_high": 1.42486,
           "range_low": 1.34824,
           "range_size": 0.07662,
-          "live_price": 1.40957,
+          "live_price": 1.40918,
           "bos": null,
           "choch": null,
           "daily_bias": "Neutre",
           "weekly_bias": "Neutre",
-          "rsi": 59.6,
+          "rsi": 59.5,
           "atr": 0.01447,
           "manipulation": {
             "fakeBos": false,
@@ -3410,32 +3410,32 @@
           "volume": {
             "profile": [
               {
-                "price": 1.40675086,
+                "price": 1.40636164,
                 "volume": 100
               },
               {
-                "price": 1.40816043,
+                "price": 1.40777082,
                 "volume": 110
               },
               {
-                "price": 1.40957,
+                "price": 1.40918,
                 "volume": 120
               },
               {
-                "price": 1.4109795699999998,
+                "price": 1.4105891799999999,
                 "volume": 130
               },
               {
-                "price": 1.41238914,
+                "price": 1.4119983600000001,
                 "volume": 140
               }
             ],
-            "poc": 1.40957,
-            "delta": 9.605053849373142,
-            "score": 51.92101076987463
+            "poc": 1.40918,
+            "delta": 9.46268366288988,
+            "score": 51.89253673257797
           },
           "cascade": {
-            "score": 60,
+            "score": 50,
             "details": [
               {
                 "label": "M1",
@@ -3447,7 +3447,7 @@
               },
               {
                 "label": "M15",
-                "aligned": true
+                "aligned": false
               },
               {
                 "label": "H1",
@@ -3468,7 +3468,7 @@
             ]
           },
           "scs": {
-            "score": 26,
+            "score": 23,
             "details": [
               {
                 "label": "BOS strength",
@@ -3492,8 +3492,8 @@
               },
               {
                 "label": "Multi-TF alignées",
-                "value": "5 / 4",
-                "pts": 15
+                "value": "4 / 4",
+                "pts": 12
               },
               {
                 "label": "Bias Daily/Weekly",
@@ -3540,9 +3540,9 @@
             "cumDelta": 0.00165,
             "emaTrend": "Baissier",
             "majorTrend": "Neutre",
-            "bbUpper": 1.42734,
-            "bbMiddle": 1.38948,
-            "bbLower": 1.35162,
+            "bbUpper": 1.42728,
+            "bbMiddle": 1.38946,
+            "bbLower": 1.35164,
             "macdHist": 0.0028
           },
           "ichimoku": {
