@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0e17" />
+    <title>Blackzeldon Scanner</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{background:#0a0e17;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#e6edf3;padding:10px 12px 80px;max-width:500px;margin:0 auto;}
+        .card{background:rgba(22,27,34,.85);border:1px solid #1f2937;border-radius:12px;padding:12px 14px;margin-bottom:10px;}
+        .card h3{font-size:10px;color:#6e7681;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+        .card h3 span{flex:1;height:1px;background:#1f2937;}
+        .flex{display:flex;gap:8px;flex-wrap:wrap;}
+        .stat{background:#0a0e17;border-radius:8px;padding:8px;text-align:center;flex:1;min-width:50px;}
+        .stat .label{font-size:9px;color:#6e7681;}
+        .stat .value{font-size:18px;font-weight:700;}
+        .badge{font-size:9px;padding:2px 8px;border-radius:10px;font-weight:700;}
+        .badge-green{background:rgba(34,197,94,.15);color:#22c55e;}
+        .badge-red{background:rgba(239,68,68,.15);color:#ef4444;}
+        .badge-yellow{background:rgba(234,179,8,.15);color:#eab308;}
+        .badge-gray{background:rgba(110,118,129,.15);color:#8b949e;}
+        .row{display:flex;justify-content:space-between;padding:6px 0;font-size:12px;border-bottom:1px solid #1f2937;}
+        .loading{text-align:center;padding:30px;color:#6e7681;}
+        .error{color:#ef4444;padding:12px;background:rgba(239,68,68,.1);border-radius:8px;}
+        .btn{background:#58a6ff;color:#0a0e17;border:none;border-radius:6px;padding:8px 14px;font-weight:700;font-size:12px;cursor:pointer;}
+        .btn:disabled{opacity:0.5;}
+        .signal-card{border-left:4px solid;padding:10px;}
+        .score-bar{height:4px;background:#1f2937;border-radius:3px;overflow:hidden;margin-top:6px;}
+        .score-bar .fill{height:100%;border-radius:3px;transition:width 0.6s ease;}
+        .tag{font-size:9px;padding:2px 8px;border-radius:10px;font-weight:700;}
+        .tag-green{background:rgba(34,197,94,.15);color:#22c55e;}
+        .tag-red{background:rgba(239,68,68,.15);color:#ef4444;}
+        .tag-yellow{background:rgba(234,179,8,.15);color:#eab308;}
+        .tag-gray{background:rgba(110,118,129,.15);color:#8b949e;}
+        .mt-2{margin-top:6px;}
+    </style>
+</head>
+<body>
+<div id="root"><div class="loading">⏳ Chargement...</div></div>
+
+<script>
+    const PAIRS = ["XAUUSD", "USDJPY", "USDCAD"];
+    const TF_LIST = ["1min", "5min", "15min", "1h", "4h", "1day", "1week"];
+    let data = null;
+    let loading = false;
+
+    async function loadData() {
+        if (loading) return;
+        loading = true;
+        const root = document.getElementById('root');
+        root.innerHTML = '<div class="loading">⏳ Chargement des données...</div>';
+
+        try {
+            const url = 'data.json?t=' + Date.now();
+            const resp = await fetch(url);
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
+            data = await resp.json();
+            render();
+        } catch (e) {
+            root.innerHTML = '<div class="error">❌ Erreur: ' + e.message + '<br><br><button class="btn" onclick="loadData()">🔄 Réessayer</button></div>';
+        }
+        loading = false;
+    }
+
+    function render() {
+        if (!data) return;
+        const root = document.getElementById('root');
+        let html = '';
+
+        // Header
+        html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <div><div style="font-size:20px;font-weight:800;background:linear-gradient(135deg,#58a6ff,#7c8cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">⚡ Blackzeldon Scanner</div>
+            <div style="font-size:9px;color:#6e7681;">${data.timestamp || ''}</div></div>
+            <div style="font-size:12px;color:#6e7681;">${new Date().toLocaleTimeString('fr-FR')}</div>
+        </div>`;
+
+        // Status
+        html += `<div class="card" style="border:1px solid #22c55e44;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;font-weight:700;color:#22c55e;">✅ Données chargées</span>
+                <button class="btn" style="background:transparent;color:#58a6ff;border:1px solid #1f2937;padding:4px 10px;font-size:11px;" onclick="loadData()">🔄 Rafraîchir</button>
+            </div>
+        </div>`;
+
+        // Paires
+        for (const pairId of PAIRS) {
+            const pairData = data.pairs.find(p => p.id === pairId);
+            if (!pairData) continue;
+
+            const tf5min = pairData.candles?.['5min'];
+            const price = tf5min && tf5min.length > 0 ? tf5min[tf5min.length - 1].close : pairData.price || 0;
+            const signal = pairData.signal || 'PAS DE TRADE';
+            const score = pairData.scoreTotal || 0;
+            const quality = pairData.quality || 'FAIBLE';
+            const isSignal = signal !== 'PAS DE TRADE' && signal !== null;
+            const color = isSignal ? '#22c55e' : '#ef4444';
+            const colorBg = isSignal ? 'rgba(34,197,94,.1)' : 'rgba(239,68,68,.1)';
+
+            html += `<div class="card signal-card" style="border-left-color:${color};background:${colorBg};">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <div>
+                        <span style="font-size:16px;font-weight:700;">${pairId}</span>
+                        <span style="font-size:12px;color:#6e7681;margin-left:8px;">${pairData.symbol || ''}</span>
+                    </div>
+                    <span class="tag ${isSignal ? 'tag-green' : 'tag-gray'}">${signal}</span>
+                </div>
+                <div style="font-size:24px;font-weight:700;margin-top:4px;">${price.toFixed(pairData.digits || 2)}</div>
+                <div class="flex mt-2">
+                    <div class="stat"><div class="label">Score</div><div class="value" style="color:${score >= 60 ? '#22c55e' : '#eab308'};">${score}</div></div>
+                    <div class="stat"><div class="label">Qualité</div><div class="value" style="font-size:14px;color:${quality === 'EXCELLENT' ? '#22c55e' : quality === 'ATTENDRE' ? '#eab308' : '#6e7681'};">${quality}</div></div>
+                    <div class="stat"><div class="label">ADX</div><div class="value" style="color:#58a6ff;">${pairData.adx || 0}</div></div>
+                    <div class="stat"><div class="label">RSI</div><div class="value" style="color:${(pairData.rsi || 50) > 70 ? '#ef4444' : (pairData.rsi || 50) < 30 ? '#22c55e' : '#eab308'};">${pairData.rsi || 0}</div></div>
+                </div>
+                <div class="score-bar"><div class="fill" style="width:${score}%;background:${score >= 60 ? '#22c55e' : score >= 40 ? '#eab308' : '#ef4444'};"></div></div>
+                <div style="font-size:11px;color:#8b949e;margin-top:6px;">
+                    ${pairData.structure || 'Neutre'} · ${pairData.zone || '—'} · BOS: ${pairData.bos || '—'} · CHoCH: ${pairData.choch || '—'}
+                </div>
+                ${pairData.reason ? `<div style="font-size:10px;color:#6e7681;margin-top:4px;">📝 ${pairData.reason}</div>` : ''}
+                ${isSignal ? `<div style="margin-top:6px;font-size:11px;color:#22c55e;">🎯 SL: ${pairData.sl || '—'} | TP: ${pairData.tp || '—'}</div>` : ''}
+            </div>`;
+
+            // Timeframes
+            if (pairData.candles) {
+                html += `<div class="card"><h3>📊 Timeframes <span></span></h3><div class="flex">`;
+                for (const tf of TF_LIST) {
+                    const candles = pairData.candles[tf];
+                    const last = candles && candles.length > 0 ? candles[candles.length - 1] : null;
+                    html += `<div class="stat"><div class="label">${tf}</div><div class="value" style="font-size:14px;">${last ? last.close.toFixed(pairData.digits || 2) : '—'}</div></div>`;
+                }
+                html += `</div></div>`;
+            }
+
+            // Patterns & Divergences
+            if (pairData.patterns || pairData.divergences) {
+                html += `<div class="card"><h3>🔍 Patterns & Divergences <span></span></h3><div class="flex">`;
+                if (pairData.patterns && pairData.patterns.length > 0) {
+                    html += `<div style="font-size:11px;color:#8b949e;">Patterns: ${pairData.patterns.map(p => p.icon + ' ' + p.type).join(' · ')}</div>`;
+                }
+                if (pairData.divergences && pairData.divergences.length > 0) {
+                    html += `<div style="font-size:11px;color:#8b949e;">Divergences: ${pairData.divergences.map(d => d.label).join(' · ')}</div>`;
+                }
+                html += `</div></div>`;
+            }
+
+            // Ichimoku
+            if (pairData.ichimoku) {
+                const i = pairData.ichimoku;
+                html += `<div class="card"><h3>📈 Ichimoku <span></span></h3><div class="flex">
+                    <div class="stat"><div class="label">Tenkan</div><div class="value" style="font-size:14px;">${i.tenkan ? i.tenkan.toFixed(pairData.digits || 2) : '—'}</div></div>
+                    <div class="stat"><div class="label">Kijun</div><div class="value" style="font-size:14px;">${i.kijun ? i.kijun.toFixed(pairData.digits || 2) : '—'}</div></div>
+                    <div class="stat"><div class="label">Senkou A</div><div class="value" style="font-size:14px;">${i.senkouA ? i.senkouA.toFixed(pairData.digits || 2) : '—'}</div></div>
+                    <div class="stat"><div class="label">Senkou B</div><div class="value" style="font-size:14px;">${i.senkouB ? i.senkouB.toFixed(pairData.digits || 2) : '—'}</div></div>
+                </div></div>`;
+            }
+
+            // Score Items
+            if (pairData.scoreItems && pairData.scoreItems.length > 0) {
+                html += `<div class="card"><h3>✅ Checklist <span></span></h3>`;
+                for (const item of pairData.scoreItems) {
+                    const color = item.ok ? '#22c55e' : '#6e7681';
+                    html += `<div class="row" style="border-bottom:1px solid #1f2937;padding:4px 0;">
+                        <span style="color:${color};">${item.ok ? '✅' : '⬜'} ${item.label}</span>
+                        <span style="color:#8b949e;font-size:11px;">${item.detail}</span>
+                        <span style="color:${color};font-weight:700;">${item.pts}pts</span>
+                    </div>`;
+                }
+                html += `</div>`;
+            }
+
+            // Manipulation
+            if (pairData.manipulation) {
+                const m = pairData.manipulation;
+                html += `<div class="card"><h3>🎭 Manipulation <span></span></h3>
+                    <div class="flex">
+                        <div class="stat"><div class="label">Fake BOS</div><div class="value" style="font-size:14px;color:${m.fakeBos ? '#ef4444' : '#22c55e'};">${m.fakeBos ? '⚠️ Oui' : '✅ Non'}</div></div>
+                        <div class="stat"><div class="label">Inducement</div><div class="value" style="font-size:14px;color:${m.inducement ? '#eab308' : '#22c55e'};">${m.inducement || 'Aucun'}</div></div>
+                        <div class="stat"><div class="label">Score</div><div class="value" style="font-size:14px;color:${m.score > 70 ? '#22c55e' : '#eab308'};">${m.score}%</div></div>
+                    </div>
+                </div>`;
+            }
+
+            // Cascade
+            if (pairData.cascade) {
+                const c = pairData.cascade;
+                html += `<div class="card"><h3>🌊 Cascade TF <span></span></h3>
+                    <div class="flex">
+                        <div class="stat"><div class="label">Alignement</div><div class="value" style="color:${c.score > 50 ? '#22c55e' : '#eab308'};">${c.score}%</div></div>
+                    </div>
+                    <div style="font-size:11px;color:#8b949e;margin-top:4px;">${c.details ? c.details.map(d => d.aligned ? '✅ ' + d.label : '❌ ' + d.label).join(' · ') : ''}</div>
+                </div>`;
+            }
+
+            // Volume Profile
+            if (pairData.volumeProfile) {
+                const v = pairData.volumeProfile;
+                html += `<div class="card"><h3>📊 Volume <span></span></h3>
+                    <div class="flex">
+                        <div class="stat"><div class="label">POC</div><div class="value" style="font-size:14px;">${v.poc ? v.poc.toFixed(pairData.digits || 2) : '—'}</div></div>
+                        <div class="stat"><div class="label">Delta</div><div class="value" style="font-size:14px;color:${v.delta > 0 ? '#22c55e' : '#ef4444'};">${v.delta > 0 ? '+' : ''}${v.delta.toFixed(2)}</div></div>
+                        <div class="stat"><div class="label">Score</div><div class="value" style="color:${v.score > 50 ? '#22c55e' : '#eab308'};">${v.score.toFixed(0)}%</div></div>
+                    </div>
+                </div>`;
+            }
+        }
+
+        // Footer
+        html += `<div style="text-align:center;font-size:9px;color:#6e7681;margin-top:16px;padding-top:12px;border-top:1px solid #1f2937;line-height:1.8;">
+            ⚡ Blackzeldon Scanner · Données temps réel<br>
+            ⚠️ Vérifie toujours sur MT5 avant d'agir
+        </div>`;
+
+        root.innerHTML = html;
+    }
+
+    // Chargement initial
+    loadData();
+
+    // Auto-refresh toutes les 2 minutes
+    setInterval(loadData, 120000);
+</script>
+</body>
+</html>
