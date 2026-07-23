@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0e17" />
+    <title>Blackzeldon Scanner — Oscar v10.1</title>
+    <script src="https://cdn.jsdelivr.net/npm/eruda@3.0.1/eruda.min.js"></script>
+    <script>eruda.init();</script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+        body{background:#0a0e17;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#e6edf3;overscroll-behavior:none;padding:10px 12px 100px;max-width:500px;margin:0 auto;}
+        .card{background:rgba(22,27,34,.85);border:1px solid #1f2937;border-radius:12px;padding:12px 14px;margin-bottom:10px;}
+        .card h3{font-size:10px;color:#6e7681;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+        .card h3 span{flex:1;height:1px;background:#1f2937;}
+        .flex{display:flex;gap:8px;flex-wrap:wrap;}
+        .stat{background:#0a0e17;border-radius:8px;padding:8px;text-align:center;flex:1;min-width:50px;}
+        .stat .label{font-size:9px;color:#6e7681;}
+        .stat .value{font-size:18px;font-weight:700;}
+        .badge{font-size:9px;padding:2px 8px;border-radius:10px;font-weight:700;}
+        .badge-green{background:rgba(34,197,94,.15);color:#22c55e;}
+        .badge-red{background:rgba(239,68,68,.15);color:#ef4444;}
+        .badge-yellow{background:rgba(234,179,8,.15);color:#eab308;}
+        .badge-gray{background:rgba(110,118,129,.15);color:#8b949e;}
+        .btn{background:#58a6ff;color:#0a0e17;border:none;border-radius:6px;padding:8px 14px;font-weight:700;font-size:12px;cursor:pointer;width:100%;}
+        .btn:disabled{opacity:0.5;}
+        .loading{text-align:center;padding:30px;color:#6e7681;}
+        .error{color:#ef4444;padding:12px;background:rgba(239,68,68,.1);border-radius:8px;}
+        .row{display:flex;justify-content:space-between;padding:6px 0;font-size:11px;border-bottom:1px solid #1f2937;}
+        .tag{font-size:9px;padding:2px 8px;border-radius:10px;font-weight:700;}
+        .tag-green{background:rgba(34,197,94,.15);color:#22c55e;}
+        .tag-red{background:rgba(239,68,68,.15);color:#ef4444;}
+        .tag-yellow{background:rgba(234,179,8,.15);color:#eab308;}
+        .tag-gray{background:rgba(110,118,129,.15);color:#8b949e;}
+        .mt-2{margin-top:6px;}
+        .signal-card{border-left:4px solid;padding:10px;}
+        .score-bar{height:4px;background:#1f2937;border-radius:3px;overflow:hidden;margin-top:6px;}
+        .score-bar .fill{height:100%;border-radius:3px;transition:width .6s;}
+        .journal-item{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;border-bottom:1px solid #1f2937;font-size:12px;}
+        .journal-item .pair{font-weight:600;width:70px;}
+        .journal-item .tf{width:50px;color:#6e7681;}
+        .journal-item .price{width:80px;font-family:monospace;}
+        .journal-item .result{width:60px;font-weight:700;}
+        .journal-item .result.win{color:#22c55e;}
+        .journal-item .result.loss{color:#ef4444;}
+        .journal-item .result.pending{color:#eab308;}
+        .equity-chart{background:#0a0e17;border-radius:8px;padding:8px;margin-top:6px;border:1px solid #1f2937;height:120px;display:flex;align-items:flex-end;gap:2px;overflow:hidden;}
+        .equity-bar{flex:1;min-height:2px;border-radius:1px;transition:height 0.3s;}
+        .zone-item{border-left:3px solid;padding:6px 10px;margin-bottom:4px;background:rgba(255,255,255,.03);border-radius:4px;display:flex;justify-content:space-between;font-size:12px;}
+        .quality-tag{font-size:9px;padding:2px 8px;border-radius:10px;font-weight:700;text-transform:uppercase;}
+        .confidence-detail{font-size:11px;color:#8b949e;padding:6px 8px;background:#0a0e17;border-radius:6px;margin-top:4px;line-height:1.6;border-left:3px solid;}
+        .details{background:#0a0e17;border-radius:8px;padding:8px;margin-top:6px;}
+        .details summary{font-size:11px;color:#58a6ff;cursor:pointer;padding:4px;border-radius:4px;background:#1f293733;}
+        .details summary:hover{background:#1f2937;}
+        .stat-box{background:#1f2937;border-radius:8px;padding:8px;text-align:center;flex:1;}
+        .stat-value{font-size:20px;font-weight:700;}
+    </style>
+</head>
+<body>
+<div id="root">
+    <div class="loading">⏳ Chargement des données...</div>
+</div>
+
+<script>
+    // ================================================================
+    // BLACKZELDON SCANNER — VERSION VANILLA JS (sans React)
+    // Lit data.json, garde 100% du design
+    // ================================================================
+
+    const PAIRS = ["XAUUSD", "USDJPY", "USDCAD"];
+    const TF_LIST = ["1min", "5min", "15min", "1h", "4h", "1day", "1week"];
+    const TF_RADAR = ["1min", "5min", "15min", "1h", "4h", "1day"];
+    const KZ = [
+        {id:"london", label:"London", start:480, end:600},
+        {id:"ny", label:"New York", start:780, end:900},
+        {id:"asia", label:"Asie", start:0, end:180}
+    ];
+
+    let allData = null;
+    let journal = [];
+    let stats = null;
+
+    // Journal
+    function getJournal() {
+        try { return JSON.parse(localStorage.getItem('blackzeldon_journal_v10') || '[]'); }
+        catch { return []; }
+    }
+    function saveJournal(j) { localStorage.setItem('blackzeldon_journal_v10', JSON.stringify(j)); }
+    function addTrade(trade) {
+        const j = getJournal();
+        trade.id = Date.now();
+        trade.result = 'pending';
+        j.push(trade);
+        saveJournal(j);
+        journal = j;
+        updateStats();
+        render();
+    }
+    function updateTrade(id, result, exitPrice, rMultiple) {
+        const j = getJournal();
+        const idx = j.findIndex(t => t.id === id);
+        if (idx !== -1) {
+            j[idx].result = result;
+            j[idx].exitPrice = exitPrice;
+            j[idx].closedAt = Date.now();
+            if (rMultiple !== undefined) j[idx].rMultiple = rMultiple;
+            saveJournal(j);
+            journal = j;
+            updateStats();
+            render();
+        }
+    }
+    function updateStats() {
+        const closed = journal.filter(t => t.result !== 'pending');
+        if (closed.length === 0) { stats = null; return; }
+        const wins = closed.filter(t => t.result === 'win').length;
+        const losses = closed.length - wins;
+        const winrate = wins / closed.length;
+        let gain = 0, loss = 0;
+        closed.forEach(t => {
+            if (t.result === 'win') gain += t.rMultiple || 1;
+            else loss += 1;
+        });
+        const pf = loss > 0 ? gain / loss : gain;
+        let equity = 0, peak = 0, maxDD = 0, curve = [];
+        closed.forEach(t => {
+            const r = t.rMultiple || (t.result === 'win' ? 2 : -1);
+            equity += r;
+            if (equity > peak) peak = equity;
+            const dd = peak > 0 ? (peak - equity) / peak * 100 : 0;
+            if (dd > maxDD) maxDD = dd;
+            curve.push({ equity, dd });
+        });
+        stats = { total: closed.length, wins, losses, winrate, pf, maxDD, curve };
+    }
+    journal = getJournal();
+    updateStats();
+
+    // Format time
+    function fmtTime(d) {
+        try { return d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit' }); }
+        catch { return d.toLocaleTimeString(); }
+    }
+
+    // LIME (UTC+0)
+    function lomeMin(d) {
+        try {
+            const p = new Intl.DateTimeFormat('fr-FR', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Africa/Lome' }).formatToParts(d);
+            return parseInt(p.find(x => x.type === 'hour').value) * 60 + parseInt(p.find(x => x.type === 'minute').value);
+        } catch { return d.getHours() * 60 + d.getMinutes(); }
+    }
+    function activeKZ(m) {
+        return KZ.find(k => m >= k.start && m < k.end) || null;
+    }
+
+    // Chargement
+    async function loadData() {
+        const root = document.getElementById('root');
+        root.innerHTML = '<div class="loading">⏳ Chargement...</div>';
+        try {
+            const resp = await fetch('data.json?t=' + Date.now());
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
+            allData = await resp.json();
+            render();
+        } catch (e) {
+            root.innerHTML = '<div class="error">❌ ' + e.message + '<br><br><button class="btn" onclick="loadData()">🔄 Réessayer</button></div>';
+        }
+    }
+
+    function getTfPrice(pairData, tfId) {
+        const candles = pairData?.candles?.[tfId];
+        if (!candles || candles.length === 0) return null;
+        return candles[candles.length - 1].close;
+    }
+
+    function render() {
+        if (!allData) return;
+        const root = document.getElementById('root');
+        const now = new Date();
+        const kz = activeKZ(lomeMin(now));
+        let html = '';
+
+        // Header
+        html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <div><div style="font-size:18px;font-weight:800;background:linear-gradient(135deg,#58a6ff,#7c8cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">⚡ Blackzeldon v10.1 (Pro)</div>
+            <div style="font-size:9px;color:#6e7681;margin-top:1px;">💱 Forex · ${kz ? 'KZ: '+kz.label : 'Pas de KZ'}</div></div>
+            <div style="font-family:monospace;font-size:14px;color:#58a6ff;">${fmtTime(now)}</div>
+        </div>`;
+
+        // Status
+        html += `<div class="card" style="border:1px solid #22c55e44;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:11px;font-weight:700;color:#22c55e;">✅ Données chargées</span>
+            <span style="font-size:10px;color:#6e7681;">${allData.timestamp ? new Date(allData.timestamp).toLocaleTimeString('fr-FR') : ''}</span>
+            <button class="btn" style="background:transparent;color:#58a6ff;border:1px solid #1f2937;padding:4px 10px;font-size:11px;width:auto;" onclick="loadData()">🔄</button>
+        </div>`;
+
+        // Pair selectors
+        html += `<div style="display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap;">`;
+        PAIRS.forEach(p => {
+            const active = window._selPair === p;
+            html += `<button onclick="window._selPair='${p}';render();" style="padding:6px 10px;border-radius:8px;border:${active ? '1px solid #58a6ff' : '1px solid #1f2937'};background:${active ? '#1f2937' : 'transparent'};color:#e6edf3;font-size:12px;font-weight:600;flex:1 1 auto;">${p}</button>`;
+        });
+        html += `</div>`;
+        const selPair = window._selPair || 'XAUUSD';
+
+        // Get pair data
+        const pairData = allData.pairs.find(p => p.id === selPair);
+        if (!pairData) {
+            root.innerHTML = html + '<div class="error">❌ Paire non trouvée</div>';
+            return;
+        }
+
+        const price = pairData.price || 0;
+        const signal = pairData.signal || 'PAS DE TRADE';
+        const score = pairData.scoreTotal || 0;
+        const quality = pairData.quality || 'FAIBLE';
+        const isSignal = signal !== 'PAS DE TRADE' && signal !== null;
+        const color = isSignal ? '#22c55e' : '#6e7681';
+        const digits = pairData.digits || 2;
+
+        // Timeframe selectors
+        html += `<div style="margin-bottom:12px;"><div style="font-size:10px;color:#6e7681;margin-bottom:6px;text-transform:uppercase;letter-spacing:.07em;">Timeframe — config SMC</div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;">`;
+        TF_LIST.forEach(tf => {
+            const active = window._selTF === tf;
+            html += `<button onclick="window._selTF='${tf}';render();" style="flex:1 1 auto;padding:7px 4px;border-radius:8px;border:${active ? '1px solid #e9b94e' : '1px solid #1f2937'};background:${active ? 'rgba(233,185,78,.12)' : 'transparent'};cursor:pointer;text-align:center;min-width:40px;">
+                <div style="font-size:13px;font-weight:700;color:${active ? '#e9b94e' : '#e6edf3'};">${tf}</div>
+                <div style="font-size:8px;color:#6e7681;margin-top:1px;">${tf === '1min' ? 'scalp' : tf === '5min' ? 'entrée' : tf === '15min' ? 'setup' : tf === '1h' ? 'biais' : tf === '4h' ? 'structure' : tf === '1day' ? 'daily' : 'weekly'}</div>
+                <div style="font-size:9px;color:${color};font-weight:700;margin-top:2px;">${score}pts</div>
+            </button>`;
+        });
+        html += `</div></div>`;
+
+        // Top Pick
+        let topPick = null;
+        let topScore = -1;
+        allData.pairs.forEach(p => {
+            if (p.signal && p.scoreTotal > topScore) {
+                topScore = p.scoreTotal;
+                topPick = p;
+            }
+        });
+        if (topPick) {
+            const tpColor = '#22c55e';
+            html += `<div class="card" style="border:2px solid #eab308;background:rgba(233,185,78,.08);">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <div>
+                        <span style="font-size:18px;margin-right:8px;">🔥</span>
+                        <span style="font-weight:700;font-size:14px;color:#eab308;">Top Pick – M5</span>
+                        <div style="font-size:12px;margin-top:4px;">
+                            <span style="font-weight:600;">${topPick.symbol || topPick.id}</span>
+                            · Score <span style="color:${tpColor};font-weight:700;">${topPick.scoreTotal}</span>
+                            · Dir. <span style="color:${tpColor};font-weight:700;">${topPick.signal}</span>
+                            · Qualité: <span class="quality-tag" style="background:${tpColor}22;color:${tpColor};">${topPick.quality || 'Excellent'}</span>
+                        </div>
+                    </div>
+                    ${topPick.id !== selPair ? `<button onclick="window._selPair='${topPick.id}';render();" style="background:#eab308;color:#0a0e17;border:none;border-radius:6px;padding:6px 12px;font-weight:700;font-size:11px;cursor:pointer;">Passer</button>` : ''}
+                </div>
+            </div>`;
+        }
+
+        // Radar
+        html += `<div class="card"><h3>Radar Multi-TF — ${pairData.symbol || selPair}<span></span></h3>`;
+        TF_RADAR.forEach(tf => {
+            const tfPrice = getTfPrice(pairData, tf);
+            const isBull = signal === 'BUY';
+            const col = isSignal ? (isBull ? '#22c55e' : '#ef4444') : '#6e7681';
+            const dir = isSignal ? signal : '—';
+            const prob = Math.round((pairData.finalProb || 0.5) * 100);
+            const sc = pairData.scoreTotal || 0;
+            const qlty = pairData.quality || 'FAIBLE';
+            const qColor = qlty === 'EXCELLENT' ? '#22c55e' : qlty === 'ATTENDRE' ? '#eab308' : '#6e7681';
+            html += `<div style="margin-bottom:6px;cursor:pointer;" onclick="window._selTF='${tf}';render();">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                    <span style="font-size:11px;font-weight:600;color:${tf === window._selTF ? '#e9b94e' : '#e6edf3'};">${tf} (${tf === '1min' ? 'scalp' : tf === '5min' ? 'entrée' : tf === '15min' ? 'setup' : tf === '1h' ? 'biais' : tf === '4h' ? 'structure' : 'daily'})</span>
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span style="font-size:10px;font-weight:700;color:${col};">${dir}</span>
+                        <span style="font-size:9px;color:#6e7681;">${prob}%</span>
+                        <span class="quality-tag" style="background:${qColor}22;color:${qColor};">${qlty}</span>
+                        <span style="font-size:11px;font-weight:700;color:${col};">${sc}pts</span>
+                    </div>
+                </div>
+                <div style="height:4px;background:#1f2937;border-radius:3px;overflow:hidden;">
+                    <div style="height:100%;width:${Math.min(100, sc)}%;background:${col};border-radius:3px;transition:width .6s;"></div>
+                </div>
+            </div>`;
+        });
+        html += `</div>`;
+
+        // Signal principal
+        html += `<div class="card signal-card" style="border-left-color:${color};">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                <div>
+                    <div style="font-size:10px;color:#6e7681;margin-bottom:2px;">${pairData.symbol || selPair} · M5 · entrée</div>
+                    <div style="font-size:30px;font-weight:700;">${price.toFixed(digits)}</div>
+                    <div style="font-size:10px;color:#8b949e;margin-top:4px;">
+                        ATR: <span style="color:#e9b94e;font-family:monospace;">${pairData.atr || 0}</span>
+                        · RSI: <span style="color:${(pairData.rsi || 50) > 70 ? '#ef4444' : (pairData.rsi || 50) < 30 ? '#22c55e' : '#eab308'};font-weight:600;">${pairData.rsi || 0}</span>
+                    </div>
+                </div>
+                <div style="text-align:right;">
+                    <div style="padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700;background:${isSignal ? (signal === 'BUY' ? 'rgba(34,197,94,.15)' : 'rgba(239,68,68,.15)') : '#1f2937'};color:${isSignal ? (signal === 'BUY' ? '#22c55e' : '#ef4444') : '#6e7681'};">
+                        ${isSignal ? (signal === 'BUY' ? '▲ HAUSSIER' : '▼ BAISSIER') : '⚠️ PAS DE TRADE'}
+                    </div>
+                    <div style="font-size:10px;color:#8b949e;margin-top:4px;">
+                        Qualité: <span class="quality-tag" style="background:${color}22;color:${color};">${quality}</span>
+                        · BOS: <span style="color:${pairData.bos ? '#22c55e' : '#6e7681'};font-weight:600;">${pairData.bos || '—'}</span>
+                        · CHoCH: <span style="color:${pairData.choch ? '#eab308' : '#6e7681'};font-weight:600;">${pairData.choch || '—'}</span>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:8px;">
+                <span class="badge ${pairData.zone === 'Premium' ? 'badge-red' : 'badge-green'}">${pairData.zone || 'Neutre'}</span>
+                <span class="badge ${pairData.dailyBias !== 'Neutre' ? 'badge-yellow' : 'badge-gray'}">D1: ${pairData.dailyBias || 'Neutre'}</span>
+                <span class="badge ${pairData.weeklyBias !== 'Neutre' ? 'badge-yellow' : 'badge-gray'}">W1: ${pairData.weeklyBias || 'Neutre'}</span>
+            </div>
+            ${pairData.confidenceDetails ? `<div class="confidence-detail">🔍 ${pairData.confidenceDetails}</div>` : ''}
+        </div>`;
+
+        // Manipulation & Volume
+        if (pairData.manipulation) {
+            const m = pairData.manipulation;
+            html += `<div class="card"><h3>🔍 Manipulation & Volume<span></span></h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
+                    <div style="background:#0a0e17;border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                        <div style="font-size:9px;color:#6e7681;">Fake BOS</div>
+                        <div style="font-size:16px;font-weight:700;color:${m.fakeBos ? '#ef4444' : '#22c55e'};">${m.fakeBos ? '⚠️ Oui' : '✅ Non'}</div>
+                    </div>
+                    <div style="background:#0a0e17;border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                        <div style="font-size:9px;color:#6e7681;">Inducement</div>
+                        <div style="font-size:16px;font-weight:700;color:${m.inducement ? '#eab308' : '#22c55e'};">${m.inducement || 'Aucun'}</div>
+                    </div>
+                    <div style="background:#0a0e17;border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                        <div style="font-size:9px;color:#6e7681;">Volume Score</div>
+                        <div style="font-size:16px;font-weight:700;color:${(pairData.volumeProfile?.score || 50) > 70 ? '#22c55e' : '#eab308'};">${(pairData.volumeProfile?.score || 50).toFixed(0)}%</div>
+                    </div>
+                </div>
+                ${pairData.volumeProfile ? `<div style="font-size:11px;color:#8b949e;margin-top:6px;text-align:center;">POC: ${pairData.volumeProfile.poc ? pairData.volumeProfile.poc.toFixed(digits) : 'N/A'} · Delta: ${pairData.volumeProfile.delta ? pairData.volumeProfile.delta.toFixed(2) : '0'} · Confiance: ${m.score ? m.score.toFixed(0)+'%' : '—'}</div>` : ''}
+            </div>`;
+        }
+
+        // Cascade TF
+        if (pairData.cascade) {
+            const c = pairData.cascade;
+            html += `<div class="card"><h3>🌊 Cascade TF & Liquidité<span></span></h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+                    <div style="background:#0a0e17;border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                        <div style="font-size:9px;color:#6e7681;">Cascade TF</div>
+                        <div style="font-size:16px;font-weight:700;color:${c.score > 60 ? '#22c55e' : '#eab308'};">${c.score}%</div>
+                    </div>
+                    <div style="background:#0a0e17;border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                        <div style="font-size:9px;color:#6e7681;">Liquidité</div>
+                        <div style="font-size:16px;font-weight:700;color:#22c55e;">${pairData.liquidity?.reason || 'N/A'}</div>
+                    </div>
+                </div>
+                ${c.details ? `<div style="font-size:10px;color:#8b949e;margin-top:6px;text-align:center;">${c.details.map(d => d.aligned ? '✅ '+d.label : '❌ '+d.label).join('  ')}</div>` : ''}
+            </div>`;
+        }
+
+        // Exchange
+        if (pairData.exchange) {
+            const e = pairData.exchange;
+            html += `<div class="card"><h3>🌐 Validation multi-exchanges<span></span></h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
+                    <div style="background:#0a0e17;border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                        <div style="font-size:9px;color:#6e7681;">Convergence</div>
+                        <div style="font-size:16px;font-weight:700;color:${e.score > 60 ? '#22c55e' : '#eab308'};">${e.score.toFixed(0)}%</div>
+                    </div>
+                    <div style="background:#0a0e17;border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                        <div style="font-size:9px;color:#6e7681;">Dispersion</div>
+                        <div style="font-size:16px;font-weight:700;color:#eab308;">${e.dispersion ? e.dispersion.toFixed(digits) : '—'}</div>
+                    </div>
+                    <div style="background:#0a0e17;border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                        <div style="font-size:9px;color:#6e7681;">Prix moy.</div>
+                        <div style="font-size:16px;font-weight:700;color:#58a6ff;">${e.avg ? e.avg.toFixed(digits) : '—'}</div>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        // SCS
+        if (pairData.scs) {
+            const s = pairData.scs;
+            html += `<div class="card"><h3>🧩 Signal Confluence Score (SCS)<span></span></h3>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <div>
+                        <div style="font-size:28px;font-weight:800;color:${s.score >= 50 ? '#22c55e' : '#eab308'};">${s.score}%</div>
+                        <div style="font-size:10px;color:#6e7681;">SCS ajuste le score final</div>
+                    </div>
+                    <div style="font-size:11px;color:#8b949e;text-align:right;">
+                        ${s.details ? s.details.slice(0,4).map(d => `<div>${d.label}: <span style="color:${d.pts > 0 ? '#22c55e' : '#6e7681'};font-weight:600;">${d.pts} pts</span></div>`).join('') : ''}
+                    </div>
+                </div>
+                ${s.details && s.details.length > 4 ? `<details style="font-size:10px;color:#6e7681;margin-top:4px;"><summary>Détails complets</summary>${s.details.map(d => `<div style="display:flex;justify-content:space-between;padding:2px 0;"><span>${d.label}</span><span style="color:${d.pts > 0 ? '#22c55e' : '#6e7681'};">${d.value} (${d.pts} pts)</span></div>`).join('')}</details>` : ''}
+            </div>`;
+        }
+
+        // Probabilités
+        html += `<div class="card"><h3>🧮 Validation Probabiliste<span></span></h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
+                <div style="background:#0a0e17;border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                    <div style="font-size:9px;color:#6e7681;">Monte Carlo</div>
+                    <div style="font-size:20px;font-weight:800;color:${(pairData.mcProb || 0.5) > 0.6 ? '#22c55e' : '#eab308'};">${Math.round((pairData.mcProb || 0.5) * 100)}%</div>
+                </div>
+                <div style="background:#0a0e17;border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                    <div style="font-size:9px;color:#6e7681;">ML Prédiction</div>
+                    <div style="font-size:20px;font-weight:800;color:#6e7681;">${pairData.mlProb ? Math.round(pairData.mlProb * 100) + '%' : '—'}</div>
+                </div>
+                <div style="background:#0a0e17;border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                    <div style="font-size:9px;color:#6e7681;">Prob. Finale</div>
+                    <div style="font-size:20px;font-weight:800;color:${(pairData.finalProb || 0.5) > 0.6 ? '#22c55e' : (pairData.finalProb || 0.5) > 0.45 ? '#eab308' : '#ef4444'};">${Math.round((pairData.finalProb || 0.5) * 100)}%</div>
+                </div>
+            </div>
+        </div>`;
+
+        // Kill Zones
+        const nowMin = lomeMin(now);
+        html += `<div class="card"><h3>Kill Zones<span></span></h3><div style="display:flex;gap:6px;">`;
+        KZ.forEach(k => {
+            const active = nowMin >= k.start && nowMin < k.end;
+            const h1 = String(Math.floor(k.start / 60)).padStart(2, '0'), m1 = String(k.start % 60).padStart(2, '0');
+            const h2 = String(Math.floor(k.end / 60)).padStart(2, '0'), m2 = String(k.end % 60).padStart(2, '0');
+            html += `<div style="flex:1;background:${active ? 'rgba(34,197,94,.1)' : 'transparent'};border:${active ? '1px solid #22c55e' : '1px solid #1f2937'};border-radius:8px;padding:7px;text-align:center;">
+                <div style="font-size:11px;font-weight:600;color:${active ? '#22c55e' : '#e6edf3'};">${k.label}</div>
+                <div style="font-size:9px;color:#6e7681;margin-top:1px;">${h1}h${m1}–${h2}h${m2}</div>
+                <div style="font-size:9px;color:${active ? '#22c55e' : '#6e7681'};margin-top:1px;">${active ? '● Actif' : '○ Inactif'}</div>
+            </div>`;
+        });
+        html += `</div></div>`;
+
+        // Métriques clés
+        html += `<div class="card"><h3>Métriques Clés<span></span></h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;">
+                <div style="background:rgba(22,27,34,.85);border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                    <div style="font-size:8px;color:#6e7681;text-transform:uppercase;">RSI</div>
+                    <div style="font-size:15px;font-weight:700;color:${(pairData.rsi || 50) > 70 ? '#ef4444' : (pairData.rsi || 50) < 30 ? '#22c55e' : '#eab308'};margin-top:2px;">${(pairData.rsi || 0).toFixed(1)}</div>
+                    <div style="font-size:8px;color:#6e7681;">${(pairData.rsi || 50) > 70 ? 'Suracheté' : (pairData.rsi || 50) < 30 ? 'Survendu' : 'Neutre'}</div>
+                </div>
+                <div style="background:rgba(22,27,34,.85);border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                    <div style="font-size:8px;color:#6e7681;text-transform:uppercase;">MACD</div>
+                    <div style="font-size:15px;font-weight:700;color:${(pairData.macdHist || 0) > 0 ? '#22c55e' : '#ef4444'};margin-top:2px;">${(pairData.macdHist || 0) > 0 ? '▲' : '▼'}</div>
+                    <div style="font-size:8px;color:#6e7681;">${(pairData.macdHist || 0) > 0 ? 'Haussier' : 'Baissier'}</div>
+                </div>
+                <div style="background:rgba(22,27,34,.85);border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                    <div style="font-size:8px;color:#6e7681;text-transform:uppercase;">BB</div>
+                    <div style="font-size:15px;font-weight:700;color:#eab308;margin-top:2px;">${pairData.bbMid ? 'Mid' : '—'}</div>
+                    <div style="font-size:8px;color:#6e7681;">Bollinger</div>
+                </div>
+                <div style="background:rgba(22,27,34,.85);border:1px solid #1f2937;border-radius:8px;padding:8px;text-align:center;">
+                    <div style="font-size:8px;color:#6e7681;text-transform:uppercase;">Δ Flow</div>
+                    <div style="font-size:15px;font-weight:700;color:${(pairData.cumDelta || 0) > 0 ? '#22c55e' : '#ef4444'};margin-top:2px;">${(pairData.cumDelta || 0) > 0 ? '▲' : '▼'}</div>
+                    <div style="font-size:8px;color:#6e7681;">Order Flow</div>
+                </div>
+            </div>
+        </div>`;
+
+        // Ichimoku
+        if (pairData.ichimoku) {
+            const i = pairData.ichimoku;
+            html += `<div class="card"><h3>Ichimoku<span></span></h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;text-align:center;">
+                    ${[{label:'Tenkan', value:i.tenkan, color:'#7c8cff'}, {label:'Kijun', value:i.kijun, color:'#eab308'}, {label:'Senkou A', value:i.senkouA, color:'#22c55e'}, {label:'Senkou B', value:i.senkouB, color:'#ef4444'}].map(item => `
+                        <div><div style="font-size:9px;color:#6e7681;margin-bottom:2px;">${item.label}</div>
+                        <div style="font-size:11px;font-weight:700;color:${item.color};font-family:monospace;">${item.value ? item.value.toFixed(digits) : '—'}</div></div>
+                    `).join('')}
+                </div>
+            </div>`;
+        }
+
+        // Patterns & Divergences
+        html += `<div style="display:flex;gap:6px;margin-bottom:10px;">
+            <div style="flex:1;background:rgba(22,27,34,.85);border:1px solid #1f2937;border-radius:10px;padding:10px;">
+                <div style="font-size:9px;color:#6e7681;text-transform:uppercase;margin-bottom:6px;">Patterns</div>
+                <div style="font-size:16px;">${pairData.patterns && pairData.patterns.length ? pairData.patterns.map(p => p.icon).join(' ') : '—'}</div>
+                ${pairData.patterns && pairData.patterns.length ? `<div style="font-size:10px;color:#8b949e;margin-top:3px;">${pairData.patterns.map(p => p.type).join(', ')}</div>` : ''}
+            </div>
+            <div style="flex:1;background:rgba(22,27,34,.85);border:1px solid #1f2937;border-radius:10px;padding:10px;">
+                <div style="font-size:9px;color:#6e7681;text-transform:uppercase;margin-bottom:6px;">Divergences</div>
+                <div style="font-size:16px;">${pairData.divergences && pairData.divergences.length ? pairData.divergences.map(d => d.type === 'bullish' ? '🐂' : '🐻').join(' ') : '—'}</div>
+                ${pairData.divergences && pairData.divergences.length ? `<div style="font-size:10px;color:#8b949e;margin-top:3px;">${pairData.divergences.map(d => d.label).join(', ')}</div>` : ''}
+            </div>
+        </div>`;
+
+        // Support & Résistance
+        html += `<div class="card"><h3>Support & Résistance<span></span></h3>
+            <div style="display:flex;gap:16px;font-size:12px;font-family:monospace;">
+                <div>
+                    <div style="color:#ef4444;font-size:10px;margin-bottom:4px;">Résistances</div>
+                    ${pairData.resLevels && pairData.resLevels.length ? pairData.resLevels.map(r => `<div style="color:#ef4444;margin-bottom:2px;">${r.toFixed(digits)}</div>`).join('') : '<div style="color:#6e7681;">—</div>'}
+                </div>
+                <div>
+                    <div style="color:#22c55e;font-size:10px;margin-bottom:4px;">Supports</div>
+                    ${pairData.supLevels && pairData.supLevels.length ? pairData.supLevels.map(s => `<div style="color:#22c55e;margin-bottom:2px;">${s.toFixed(digits)}</div>`).join('') : '<div style="color:#6e7681;">—</div>'}
+                </div>
+                <div>
+                    <div style="color:#eab308;font-size:10px;margin-bottom:4px;">Pivot</div>
+                    ${pairData.resLevels && pairData.resLevels[0] && pairData.supLevels && pairData.supLevels[0] ? `<div style="color:#eab308;">${((pairData.resLevels[0] + pairData.supLevels[0]) / 2).toFixed(digits)}</div>` : '<div style="color:#6e7681;">—</div>'}
+                </div>
+            </div>
+        </div>`;
+
+        // Zones SMC
+        if (pairData.zones && pairData.zones.length > 0) {
+            html += `<div class="card"><h3>Zones SMC Clés · M5<span></span></h3>`;
+            pairData.zones.slice(0, 8).forEach(z => {
+                const isClose = Math.abs(z.pts || 0) < 3;
+                const colors = { RES: '#ef4444', SUP: '#22c55e', FVG: '#7c8cff', OB: z.dir === 'bull' ? '#22c55e' : '#ef4444' };
+                const col = colors[z.kind] || '#6e7681';
+                html += `<div style="position:relative;margin-bottom:7px;">
+                    ${isClose ? `<div style="position:absolute;top:-8px;right:10px;z-index:1;background:#eab308;color:#1a1a1a;font-size:9px;font-weight:800;padding:2px 7px;border-radius:8px;">⚡ PRIX PROCHE</div>` : ''}
+                    <div style="border:1px solid ${isClose ? '#eab308' : col+'55'};background:${col}12;border-radius:9px;padding:10px 12px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <span style="font-weight:700;font-size:12px;color:${col};">${z.kind} ${z.kind === 'OB' ? (z.dir === 'bull' ? '▲' : '▼') : '◆'}</span>
+                            <span style="font-size:16px;font-weight:700;font-family:monospace;">${z.value.toFixed(digits)}</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;margin-top:2px;">
+                            <span style="font-size:10px;color:#6e7681;">${z.label}</span>
+                            <span style="font-size:10px;color:#6e7681;">${z.pts >= 0 ? '+' : ''}${z.pts ? z.pts.toFixed(1) : '0'} pts</span>
+                        </div>
+                    </div>
+                </div>`;
+            });
+            html += `</div>`;
+        }
+
+        // Checklist
+        if (pairData.scoreItems && pairData.scoreItems.length > 0) {
+            html += `<div class="card"><h3>Checklist · Config M5<span></span></h3>`;
+            pairData.scoreItems.forEach(it => {
+                const col = it.ok ? '#22c55e' : '#6e7681';
+                html += `<div style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;border:1px solid ${col}44;background:${it.ok ? 'rgba(34,197,94,.07)' : 'rgba(239,68,68,.06)'};margin-bottom:6px;">
+                    <span style="width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:${col};color:#0a0e17;font-weight:800;">${it.ok ? '✓' : '✕'}</span>
+                    <div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span style="font-size:12px;font-weight:600;">${it.label}</span><span style="font-size:9px;color:#6e7681;font-family:monospace;">${it.cat || ''}</span></div>
+                    <div style="font-size:11px;color:#8b949e;">${it.detail}</div></div>
+                    <span style="font-size:11px;font-weight:700;color:${col};min-width:30px;text-align:right;">+${it.pts}</span>
+                </div>`;
+            });
+            html += `</div>`;
+        }
+
+        // Signal & Probabilités Bayésiennes
+        html += `<div class="card"><h3>Signal<span></span></h3>
+            <div style="border:2px solid ${color}55;border-radius:8px;padding:12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                    <div style="font-size:18px;font-weight:800;color:${isSignal ? (signal === 'BUY' ? '#22c55e' : '#ef4444') : '#6e7681'};">${isSignal ? signal + ' SETUP ' + (signal === 'BUY' ? '▲' : '▼') : '⚠️ PAS DE TRADE'}</div>
+                    ${isSignal ? `<div style="padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;background:${color}22;color:${color};">${pairData.strength || 'MOYEN'}</div>` : ''}
+                </div>
+                <div style="font-size:12px;color:#c9d1d9;line-height:1.9;">
+                    <div>Biais: <span style="color:${pairData.structure === 'Haussier' ? '#22c55e' : '#ef4444'};font-weight:600;">${pairData.h1BiasText || pairData.structure || 'Neutre'}</span></div>
+                    <div>CHoCH: <span style="color:${pairData.chochText && pairData.chochText.includes('Bullish') ? '#22c55e' : pairData.chochText && pairData.chochText.includes('Bearish') ? '#ef4444' : '#6e7681'};font-weight:600;">${pairData.chochText || 'Pas de CHoCH'}</span></div>
+                    <div>OTE: <span style="color:${pairData.inOTE ? '#22c55e' : '#ef4444'};font-weight:600;">${pairData.inOTE ? 'Zone OTE' : 'Hors zone'}</span></div>
+                    <div>Action: <span style="color:#58a6ff;font-weight:500;">${pairData.action || 'Pas de signal'}</span></div>
+                    ${pairData.trendWarn ? `<div style="color:#eab308;">${pairData.trendWarn}</div>` : ''}
+                </div>
+            </div>
+            <div style="display:flex;gap:6px;margin-top:10px;">
+                <div style="flex:1;background:#0a0e17;border:1px solid #1f2937;border-radius:10px;padding:10px 6px;text-align:center;">
+                    <div style="font-size:9px;color:#6e7681;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Win</div>
+                    <div style="font-size:18px;font-weight:800;color:${(pairData.finalProb || 0.5) >= 0.65 ? '#22c55e' : (pairData.finalProb || 0.5) >= 0.5 ? '#eab308' : '#ef4444'};">${Math.round((pairData.finalProb || 0.5) * 100)}%</div>
+                    <div style="font-size:9px;color:#6e7681;margin-top:2px;">bayésien</div>
+                </div>
+                <div style="flex:1;background:#0a0e17;border:1px solid #1f2937;border-radius:10px;padding:10px 6px;text-align:center;">
+                    <div style="font-size:9px;color:#6e7681;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Loss</div>
+                    <div style="font-size:18px;font-weight:800;color:#ef4444;">${Math.round((1 - (pairData.finalProb || 0.5)) * 100)}%</div>
+                    <div style="font-size:9px;color:#6e7681;margin-top:2px;">1-P</div>
+                </div>
+                <div style="flex:1;background:#0a0e17;border:1px solid #1f2937;border-radius:10px;padding:10px 6px;text-align:center;">
+                    <div style="font-size:9px;color:#6e7681;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">EV</div>
+                    <div style="font-size:18px;font-weight:800;color:${parseFloat(pairData.ev || '0') > 0 ? '#22c55e' : '#ef4444'};">${pairData.ev || '0.00'}</div>
+                    <div style="font-size:9px;color:#6e7681;margin-top:2px;">RR 1:2</div>
+                </div>
+            </div>
+        </div>`;
+
+        // Plan de trade
+        if (pairData.plan) {
+            const p = pairData.plan;
+            html += `<div class="card"><h3>Plan de Trade · ATR ${(pairData.atr || 0).toFixed(digits)}<span></span></h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:6px;">
+                    ${[{label:'ENTRÉE A', value:p.entryA, color:'#58a6ff'}, {label:'SL', value:p.sl, color:'#ef4444'}, {label:'BE', value:p.be, color:'#eab308'}, {label:'TRAILING', value:p.trailingStart, color:'#7c8cff'}].map(item => `
+                        <div style="flex:1;background:#0a0e17;border:1px solid #1f2937;border-radius:10px;padding:10px 6px;text-align:center;">
+                            <div style="font-size:9px;color:#6e7681;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">${item.label}</div>
+                            <div style="width:16px;height:3px;background:${item.color};margin:0 auto 6px;border-radius:2px;"></div>
+                            <div style="font-size:12px;font-weight:700;font-family:monospace;color:${item.color};">${item.value ? item.value.toFixed(digits) : '—'}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div style="display:flex;gap:6px;margin-bottom:10px;">
+                    ${[{label:'TP1 (1:1)', value:p.tp1, color:'#22c55e'}, {label:'TP2 (1:2)', value:p.tp2, color:'#22c55e'}, {label:'TP3 (1:3)', value:p.tp3, color:'#22c55e'}].map(item => `
+                        <div style="flex:1;background:#0a0e17;border:1px solid #1f2937;border-radius:10px;padding:10px 6px;text-align:center;">
+                            <div style="font-size:9px;color:#6e7681;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">${item.label}</div>
+                            <div style="width:16px;height:3px;background:${item.color};margin:0 auto 6px;border-radius:2px;"></div>
+                            <div style="font-size:12px;font-weight:700;font-family:monospace;color:${item.color};">${item.value ? item.value.toFixed(digits) : '—'}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                <button onclick="addTrade({pair:'${pairData.symbol || selPair}',tf:'M5',dir:'${signal || 'PAS DE TRADE'}',entryPrice:${price},rMultiple:2})" style="width:100%;background:${color};color:#0a0e17;border:none;border-radius:8px;padding:12px;font-weight:700;font-size:14px;cursor:pointer;">📈 Ouvrir trade ${signal || 'PAS DE TRADE'}</button>
+            </div>`;
+        }
+
+        // Score de confluence
+        html += `<div class="card"><h3>Score de Confluence · M5<span></span></h3>
+            <div style="display:flex;justify-content:space-between;">
+                <div>
+                    <div style="font-size:38px;font-weight:800;color:${isSignal ? color : '#6e7681'};line-height:1;">${score}</div>
+                    <div style="font-size:12px;color:#6e7681;">/ 100 pts</div>
+                </div>
+                <div style="text-align:right;">
+                    ${pairData.scoreItems ? pairData.scoreItems.filter(it => it.pts > 0).map(it => `<div style="font-size:11px;display:flex;justify-content:flex-end;gap:8px;margin-bottom:3px;"><span style="color:#6e7681;">${it.label}</span><span style="color:#22c55e;font-weight:700;">+${it.pts}</span></div>`).join('') : ''}
+                </div>
+            </div>
+            <div style="height:8px;background:#1f2937;border-radius:4px;margin-top:10px;overflow:hidden;">
+                <div style="height:100%;width:${score}%;background:linear-gradient(90deg,${isSignal ? color+'88' : '#6e768188'},${isSignal ? color : '#6e7681'});border-radius:4px;transition:width .6s;"></div>
+            </div>
+        </div>`;
+
+        // Journal
+        html += `<div class="card"><h3>📋 Journal (${journal.length})<span></span></h3>`;
+        journal.slice().reverse().slice(0, 20).forEach(t => {
+            const cls = t.result === 'win' ? 'win' : t.result === 'loss' ? 'loss' : 'pending';
+            const label = t.result === 'win' ? '✅' : t.result === 'loss' ? '❌' : '⏳';
+            html += `<div class="journal-item">
+                <span class="pair">${t.pair}</span>
+                <span class="tf">${t.timeframe || 'M5'}</span>
+                <span class="price">${t.entryPrice ? t.entryPrice.toFixed(digits) : '—'}</span>
+                <span class="result ${cls}">${label}</span>
+            </div>`;
+        });
+        html += `</div>`;
+
+        // Stats
+        if (stats) {
+            html += `<div class="card"><h3>📈 Stats<span></span></h3>
+                <div style="display:flex;gap:6px;">
+                    <div class="stat-box"><div style="font-size:10px;color:#6e7681;">Trades</div><div class="stat-value" style="color:#58a6ff;">${stats.total}</div></div>
+                    <div class="stat-box"><div style="font-size:10px;color:#6e7681;">Winrate</div><div class="stat-value" style="color:${stats.winrate > 0.5 ? '#22c55e' : '#ef4444'};">${Math.round(stats.winrate * 100)}%</div></div>
+                    <div class="stat-box"><div style="font-size:10px;color:#6e7681;">Profit Factor</div><div class="stat-value" style="color:${stats.pf > 1 ? '#22c55e' : '#ef4444'};">${stats.pf.toFixed(2)}</div></div>
+                </div>
+                ${stats.curve && stats.curve.length > 1 ? `<div class="equity-chart">${stats.curve.map(p => {
+                    const maxEq = Math.max(1, ...stats.curve.map(c => c.equity));
+                    const minEq = Math.min(0, ...stats.curve.map(c => c.equity));
+                    const range = maxEq - minEq || 1;
+                    const h = ((p.equity - minEq) / range) * 100;
+                    return `<div class="equity-bar" style="height:${Math.max(2, h)}%;background:${p.equity >= 0 ? '#22c55e' : '#ef4444'};"></div>`;
+                }).join('')}</div>` : ''}
+            </div>`;
+        }
+
+        // Footer
+        html += `<div style="text-align:center;font-size:9px;color:#6e7681;margin-top:16px;line-height:1.8;border-top:1px solid #1f2937;padding-top:12px;">
+            BLACKZELDON SCANNER · OSCAR v10.1 (Pro) — Corrigé<br>
+            Manipulation · Volume · Cascade TF · Liquidité · Risque dynamique · Multi-Ex · SCS<br>
+            Radar / Panel inchangés · ⚠️ vérifie toujours sur MT5 avant d'agir
+        </div>`;
+
+        root.innerHTML = html;
+    }
+
+    // Chargement initial
+    window._selPair = 'XAUUSD';
+    window._selTF = 'M5';
+    loadData();
+    setInterval(loadData, 120000);
+</script>
+</body>
+  </html>
