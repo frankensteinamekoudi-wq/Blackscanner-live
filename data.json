@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-09-14T00:14:39.906177Z",
+  "timestamp": "2026-09-14T04:58:38.876666Z",
   "pairs": [
     {
       "id": "XAUUSD",
       "symbol": "XAUUSD",
-      "price": 4348.34373,
+      "price": 4348.46289,
       "signal": null,
       "sl": null,
       "tp": null,
-      "adx": 11.3,
-      "rsi": 49.1,
-      "atr": 0.21,
+      "adx": 9.4,
+      "rsi": 63.7,
+      "atr": 0.22,
       "structure": "Haussier",
-      "zone": "Discount",
+      "zone": "Premium",
       "bos": null,
       "choch": null,
-      "reason": "ADX trop faible (11.3 < 15)",
-      "scoreTotal": 66,
+      "reason": "ADX trop faible (9.4 < 15)",
+      "scoreTotal": 58,
       "quality": "ATTENDRE",
       "dailyBias": "Neutre",
       "weeklyBias": "Neutre",
@@ -40,9 +40,9 @@
         },
         {
           "label": "Zone P/D",
-          "ok": true,
-          "detail": "Discount",
-          "pts": 12,
+          "ok": false,
+          "detail": "Premium",
+          "pts": 0,
           "max": 12,
           "cat": "SMC"
         },
@@ -73,7 +73,7 @@
         {
           "label": "RSI",
           "ok": true,
-          "detail": "49.1",
+          "detail": "63.7",
           "pts": 5,
           "max": 5,
           "cat": "Indicateur"
@@ -104,9 +104,9 @@
         },
         {
           "label": "Patterns",
-          "ok": true,
-          "detail": "\u2b50",
-          "pts": 6,
+          "ok": false,
+          "detail": "\u2014",
+          "pts": 0,
           "max": 6,
           "cat": "Pattern"
         },
@@ -121,16 +121,16 @@
         {
           "label": "Manipulation",
           "ok": true,
-          "detail": "Aucune",
+          "detail": "bull",
           "pts": 15,
           "max": 15,
           "cat": "Robustesse"
         },
         {
           "label": "Volume",
-          "ok": false,
-          "detail": "POC: 4348.34",
-          "pts": 0,
+          "ok": true,
+          "detail": "POC: 4348.46",
+          "pts": 10,
           "max": 10,
           "cat": "Volume"
         },
@@ -159,50 +159,50 @@
           "cat": "Robustesse"
         }
       ],
-      "patterns": [
+      "patterns": [],
+      "divergences": [
         {
-          "type": "Shooting Star",
-          "icon": "\u2b50"
+          "type": "bearish",
+          "label": "Divergence Baissi\u00e8re RSI"
         }
       ],
-      "divergences": [],
       "ichimoku": {
-        "tenkan": 4348.428085,
-        "kijun": 4348.4282650000005,
-        "senkouA": 4348.428175,
-        "senkouB": 4348.26589
+        "tenkan": 4348.434725,
+        "kijun": 4338.021629999999,
+        "senkouA": 4343.228177499999,
+        "senkouB": 4338.021629999999
       },
       "manipulation": {
         "fakeBos": false,
-        "inducement": null,
-        "score": 100
+        "inducement": "bull",
+        "score": 70
       },
       "volumeProfile": {
         "profile": [
           {
-            "price": 4339.647042539999,
+            "price": 4339.76596422,
             "volume": 100
           },
           {
-            "price": 4343.9953862699995,
+            "price": 4344.11442711,
             "volume": 110
           },
           {
-            "price": 4348.34373,
+            "price": 4348.46289,
             "volume": 120
           },
           {
-            "price": 4352.692073729999,
+            "price": 4352.811352889999,
             "volume": 130
           },
           {
-            "price": 4357.04041746,
+            "price": 4357.15981578,
             "volume": 140
           }
         ],
-        "poc": 4348.34373,
-        "delta": -0.8652249338579594,
-        "score": 49.82695501322841
+        "poc": 4348.46289,
+        "delta": 13.710020678276955,
+        "score": 52.74200413565539
       },
       "cascade": {
         "score": 10,
@@ -219,13 +219,13 @@
       },
       "exchange": {
         "prices": [
-          4348.34373,
-          4348.778564372999,
-          4347.908895627
+          4348.46289,
+          4348.897736289,
+          4348.028043711
         ],
-        "avg": 4348.34373,
-        "dispersion": 0.86967,
-        "score": 95.00000000000195
+        "avg": 4348.46289,
+        "dispersion": 0.86969,
+        "score": 94.99999999999731
       },
       "scs": {
         "score": 11,
@@ -280,66 +280,66 @@
           "kind": "RES",
           "dir": "bear",
           "label": "Resistance",
-          "value": 4348.57,
-          "pts": 1.1
+          "value": 4350.78,
+          "pts": 10.8
         },
         {
           "kind": "SUP",
           "dir": "bull",
           "label": "Support",
-          "value": 4348.3,
-          "pts": -0.2
+          "value": 4325.26,
+          "pts": -107.6
         },
         {
           "kind": "FVG",
           "dir": "bull",
           "label": "FVG",
-          "value": 4348.43,
-          "pts": 0.4
+          "value": 4338.02,
+          "pts": -48.4
         }
       ],
       "resLevels": [
-        4348.57,
-        4348.46
+        4350.78,
+        4350.68
       ],
       "supLevels": [
-        4348.3,
-        4348.4
+        4325.26,
+        4325.37
       ],
-      "bbMid": 4348.39,
-      "ev": "0.90",
+      "bbMid": 4346.4,
+      "ev": "0.50",
       "momentum": "Neutre",
-      "cumDelta": -7.66,
+      "cumDelta": 8.93,
       "emaTrend": "Haussier",
       "majorTrend": "Neutre",
-      "macdHist": -0.0185,
-      "finalProb": 0.7000000000000001,
-      "mcProb": 0.65,
+      "macdHist": -0.1221,
+      "finalProb": 0.5,
+      "mcProb": 0.5,
       "mlProb": null,
-      "confidenceDetails": "Zone P/D \u00b7 RSI \u00b7 EMA Trend \u00b7 Patterns \u00b7 Manipulation \u00b7 Liquidit\u00e9 \u00b7 Multi-Ex",
+      "confidenceDetails": "RSI \u00b7 EMA Trend \u00b7 Manipulation \u00b7 Volume \u00b7 Liquidit\u00e9 \u00b7 Multi-Ex",
       "h1BiasText": "Haussier",
       "chochText": "Pas de CHoCH",
       "action": "Pas de signal",
       "inOTE": false,
-      "fibo618": 4348.46,
+      "fibo618": 4341.03,
       "candles": {}
     },
     {
       "id": "USDJPY",
       "symbol": "USDJPY",
-      "price": 153.26774,
-      "signal": null,
-      "sl": null,
-      "tp": null,
-      "adx": 6.8,
-      "rsi": 46.7,
-      "atr": 0.269,
+      "price": 153.58588,
+      "signal": "SELL",
+      "sl": 153.665,
+      "tp": 153.309,
+      "adx": 30.9,
+      "rsi": 52.8,
+      "atr": 0.079,
       "structure": "Baissier",
-      "zone": "Discount",
+      "zone": "Premium",
       "bos": null,
       "choch": null,
-      "reason": "ADX trop faible (6.8 < 15)",
-      "scoreTotal": 71,
+      "reason": "Baissier + Premium (ADX 30.9)",
+      "scoreTotal": 69,
       "quality": "ATTENDRE",
       "dailyBias": "Neutre",
       "weeklyBias": "Neutre",
@@ -363,9 +363,9 @@
         },
         {
           "label": "Zone P/D",
-          "ok": true,
-          "detail": "Discount",
-          "pts": 12,
+          "ok": false,
+          "detail": "Premium",
+          "pts": 0,
           "max": 12,
           "cat": "SMC"
         },
@@ -396,7 +396,7 @@
         {
           "label": "RSI",
           "ok": true,
-          "detail": "46.7",
+          "detail": "52.8",
           "pts": 5,
           "max": 5,
           "cat": "Indicateur"
@@ -428,7 +428,7 @@
         {
           "label": "Patterns",
           "ok": true,
-          "detail": "\u2b50",
+          "detail": "\u23fa \u23fa",
           "pts": 6,
           "max": 6,
           "cat": "Pattern"
@@ -444,16 +444,16 @@
         {
           "label": "Manipulation",
           "ok": true,
-          "detail": "Aucune",
+          "detail": "bull",
           "pts": 15,
           "max": 15,
           "cat": "Robustesse"
         },
         {
           "label": "Volume",
-          "ok": false,
-          "detail": "POC: 153.268",
-          "pts": 0,
+          "ok": true,
+          "detail": "POC: 153.586",
+          "pts": 10,
           "max": 10,
           "cat": "Volume"
         },
@@ -484,48 +484,52 @@
       ],
       "patterns": [
         {
-          "type": "Shooting Star",
-          "icon": "\u2b50"
+          "type": "Doji",
+          "icon": "\u23fa"
+        },
+        {
+          "type": "Doji",
+          "icon": "\u23fa"
         }
       ],
       "divergences": [],
       "ichimoku": {
-        "tenkan": 153.29071,
-        "kijun": 153.062515,
-        "senkouA": 153.17661249999998,
-        "senkouB": 153.298985
+        "tenkan": 153.46471000000003,
+        "kijun": 153.508535,
+        "senkouA": 153.4866225,
+        "senkouB": 153.508535
       },
       "manipulation": {
         "fakeBos": false,
-        "inducement": null,
-        "score": 100
+        "inducement": "bull",
+        "score": 70
       },
       "volumeProfile": {
         "profile": [
           {
-            "price": 152.96120452,
+            "price": 153.27870824000001,
             "volume": 100
           },
           {
-            "price": 153.11447226,
+            "price": 153.43229412,
             "volume": 110
           },
           {
-            "price": 153.26774,
+            "price": 153.58588,
             "volume": 120
           },
           {
-            "price": 153.42100774,
+            "price": 153.73946587999998,
             "volume": 130
           },
           {
-            "price": 153.57427548,
+            "price": 153.89305176,
             "volume": 140
           }
         ],
-        "poc": 153.26774,
-        "delta": -3.2793014733347405,
-        "score": 49.34413970533305
+        "poc": 153.58588,
+        "delta": 2.7996315881273617,
+        "score": 50.559926317625475
       },
       "cascade": {
         "score": 10,
@@ -542,13 +546,13 @@
       },
       "exchange": {
         "prices": [
-          153.26774,
-          153.283066774,
-          153.25241322600002
+          153.58588,
+          153.601238588,
+          153.570521412
         ],
-        "avg": 153.26774,
-        "dispersion": 0.03065,
-        "score": 95.00000000000404
+        "avg": 153.58588,
+        "dispersion": 0.03072,
+        "score": 95.00000000000065
       },
       "scs": {
         "score": 11,
@@ -590,80 +594,89 @@
           }
         ]
       },
-      "plan": null,
-      "entryPrice": null,
-      "slPrice": null,
-      "tp1Price": null,
-      "tp2Price": null,
-      "tp3Price": null,
-      "bePrice": null,
-      "trailingStart": null,
+      "plan": {
+        "entryA": 153.586,
+        "sl": 153.665,
+        "tp1": 153.428,
+        "tp2": 153.27,
+        "tp3": 153.112,
+        "be": 153.546,
+        "trailingStart": 153.507,
+        "dir": "bear"
+      },
+      "entryPrice": 153.586,
+      "slPrice": 153.665,
+      "tp1Price": 153.428,
+      "tp2Price": 153.27,
+      "tp3Price": 153.112,
+      "bePrice": 153.546,
+      "trailingStart": 153.507,
       "zones": [
         {
           "kind": "RES",
           "dir": "bear",
           "label": "Resistance",
-          "value": 154.129,
-          "pts": 3.2
+          "value": 153.797,
+          "pts": 2.7
         },
         {
           "kind": "SUP",
           "dir": "bull",
           "label": "Support",
-          "value": 152.469,
-          "pts": -3.0
+          "value": 153.22,
+          "pts": -4.6
         },
         {
           "kind": "FVG",
           "dir": "bull",
           "label": "FVG",
-          "value": 153.299,
-          "pts": 0.1
+          "value": 153.509,
+          "pts": -1.0
         }
       ],
       "resLevels": [
-        154.129,
-        153.995
+        153.797,
+        153.758
       ],
       "supLevels": [
-        152.469,
-        152.603
+        153.22,
+        153.259
       ],
-      "bbMid": 153.285,
-      "ev": "0.60",
+      "bbMid": 153.516,
+      "ev": "0.50",
       "momentum": "Neutre",
-      "cumDelta": 0.222,
+      "cumDelta": 0.05,
       "emaTrend": "Baissier",
       "majorTrend": "Neutre",
-      "macdHist": 0.02,
-      "finalProb": 0.55,
+      "macdHist": 0.0146,
+      "finalProb": 0.5,
       "mcProb": 0.5,
       "mlProb": null,
-      "confidenceDetails": "Zone P/D \u00b7 RSI \u00b7 MACD \u00b7 EMA Trend \u00b7 Patterns \u00b7 Manipulation \u00b7 Liquidit\u00e9 \u00b7 Multi-Ex",
+      "confidenceDetails": "RSI \u00b7 MACD \u00b7 EMA Trend \u00b7 Patterns \u00b7 Manipulation \u00b7 Volume \u00b7 Liquidit\u00e9 \u00b7 Multi-Ex",
       "h1BiasText": "Baissier",
       "chochText": "Pas de CHoCH",
-      "action": "Pas de signal",
-      "inOTE": false,
-      "fibo618": 153.495,
+      "action": "SELL setup",
+      "inOTE": true,
+      "fibo618": 153.577,
       "candles": {}
     },
     {
       "id": "USDCAD",
       "symbol": "USDCAD",
-      "price": 1.38616,
+      "price": 1.38701,
       "signal": null,
       "sl": null,
       "tp": null,
-      "adx": 38.2,
-      "rsi": 48.2,
-      "atr": 0.00064,
+      "adx": 30.2,
+      "rsi": 53.3,
+      "atr": 0.00015,
       "structure": "Neutre",
       "zone": "Premium",
       "bos": null,
       "choch": null,
       "reason": "Conditions non r\u00e9unies",
-      "scoreTotal": 45,
-      "quality": "FAIBLE",
+      "scoreTotal": 61,
+      "quality": "ATTENDRE",
       "dailyBias": "Neutre",
       "weeklyBias": "Neutre",
       "digits": 5,
@@ -719,7 +732,7 @@
         {
           "label": "RSI",
           "ok": true,
-          "detail": "48.2",
+          "detail": "53.3",
           "pts": 5,
           "max": 5,
           "cat": "Indicateur"
@@ -750,9 +763,9 @@
         },
         {
           "label": "Patterns",
-          "ok": false,
-          "detail": "\u2014",
-          "pts": 0,
+          "ok": true,
+          "detail": "\u23fa",
+          "pts": 6,
           "max": 6,
           "cat": "Pattern"
         },
@@ -767,16 +780,16 @@
         {
           "label": "Manipulation",
           "ok": true,
-          "detail": "bull",
+          "detail": "Aucune",
           "pts": 15,
           "max": 15,
           "cat": "Robustesse"
         },
         {
           "label": "Volume",
-          "ok": false,
-          "detail": "POC: 1.38616",
-          "pts": 0,
+          "ok": true,
+          "detail": "POC: 1.38701",
+          "pts": 10,
           "max": 10,
           "cat": "Volume"
         },
@@ -805,45 +818,50 @@
           "cat": "Robustesse"
         }
       ],
-      "patterns": [],
+      "patterns": [
+        {
+          "type": "Doji",
+          "icon": "\u23fa"
+        }
+      ],
       "divergences": [],
       "ichimoku": {
-        "tenkan": 1.386625,
-        "kijun": 1.385065,
-        "senkouA": 1.385845,
-        "senkouB": 1.38517
+        "tenkan": 1.38694,
+        "kijun": 1.38699,
+        "senkouA": 1.386965,
+        "senkouB": 1.386905
       },
       "manipulation": {
         "fakeBos": false,
-        "inducement": "bull",
-        "score": 70
+        "inducement": null,
+        "score": 100
       },
       "volumeProfile": {
         "profile": [
           {
-            "price": 1.38338768,
+            "price": 1.3842359800000001,
             "volume": 100
           },
           {
-            "price": 1.38477384,
+            "price": 1.38562299,
             "volume": 110
           },
           {
-            "price": 1.38616,
+            "price": 1.38701,
             "volume": 120
           },
           {
-            "price": 1.3875461599999999,
+            "price": 1.3883970099999998,
             "volume": 130
           },
           {
-            "price": 1.38893232,
+            "price": 1.38978402,
             "volume": 140
           }
         ],
-        "poc": 1.38616,
-        "delta": -1.7713210952166065,
-        "score": 49.64573578095668
+        "poc": 1.38701,
+        "delta": 3.33058121608061,
+        "score": 50.66611624321612
       },
       "cascade": {
         "score": 30,
@@ -860,13 +878,13 @@
       },
       "exchange": {
         "prices": [
-          1.38616,
-          1.3862986160000002,
-          1.386021384
+          1.38701,
+          1.387148701,
+          1.386871299
         ],
-        "avg": 1.38616,
+        "avg": 1.38701,
         "dispersion": 0.00028,
-        "score": 94.9999999999967
+        "score": 94.99999999999932
       },
       "scs": {
         "score": 29,
@@ -921,48 +939,48 @@
           "kind": "RES",
           "dir": "bear",
           "label": "Resistance",
-          "value": 1.38795,
-          "pts": 2.8
+          "value": 1.38726,
+          "pts": 1.7
         },
         {
           "kind": "SUP",
           "dir": "bull",
           "label": "Support",
-          "value": 1.38229,
-          "pts": -6.0
+          "value": 1.38674,
+          "pts": -1.9
         },
         {
           "kind": "FVG",
           "dir": "bull",
           "label": "FVG",
-          "value": 1.38512,
-          "pts": -1.6
+          "value": 1.387,
+          "pts": -0.1
         }
       ],
       "resLevels": [
-        1.38795,
-        1.38763
+        1.38726,
+        1.38719
       ],
       "supLevels": [
-        1.38229,
-        1.38261
+        1.38674,
+        1.38681
       ],
-      "bbMid": 1.38621,
+      "bbMid": 1.38692,
       "ev": "0.50",
       "momentum": "Neutre",
-      "cumDelta": 0.00038,
+      "cumDelta": -6e-05,
       "emaTrend": "Baissier",
       "majorTrend": "Neutre",
-      "macdHist": 0.0001,
+      "macdHist": 0.0,
       "finalProb": 0.5,
       "mcProb": 0.5,
       "mlProb": null,
-      "confidenceDetails": "RSI \u00b7 MACD \u00b7 Manipulation \u00b7 Liquidit\u00e9 \u00b7 Multi-Ex",
+      "confidenceDetails": "RSI \u00b7 MACD \u00b7 Patterns \u00b7 Manipulation \u00b7 Volume \u00b7 Liquidit\u00e9 \u00b7 Multi-Ex",
       "h1BiasText": "Neutre",
       "chochText": "Pas de CHoCH",
       "action": "Pas de signal",
-      "inOTE": true,
-      "fibo618": 1.38579,
+      "inOTE": false,
+      "fibo618": 1.38706,
       "candles": {}
     }
   ]
